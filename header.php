@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
 <head>
 	<title></title>
@@ -10,10 +9,9 @@
 <header>
 	<nav>
 		<div class="main-wrapper">
-			<ul>
-				<li><a href="index.php">Home</a></li>
-
-			</ul>
+			<div id="title">
+			MavConnect
+		</div>
 			<div class='nav-login'>
 				<form>
 					<input type="text" name="uid" placeholder="Username/email">

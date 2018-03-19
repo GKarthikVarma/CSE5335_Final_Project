@@ -41,7 +41,7 @@ if(isset($_POST['submit'])) {
 
 				mysqli_query($connection, $sql);
 				header("Location: ../signup.php?signup=success");
-				exit();					
+				exit();
 				}
 			//}
 		}
@@ -51,3 +51,5 @@ if(isset($_POST['submit'])) {
 	header("Location: ../signup.php");
 	exit();
 }
+
+?>

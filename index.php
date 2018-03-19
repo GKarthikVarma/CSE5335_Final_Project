@@ -4,7 +4,9 @@
 
 <section class='main-container'>
 	<div class='main-wrapper'>
-		<h2>Home</h2>
+		<div id='home-logo'>
+		</div>
+
 	</div>
 </section>
 
