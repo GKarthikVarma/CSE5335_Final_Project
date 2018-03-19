@@ -195,6 +195,19 @@ header .nav-login a{
     cursor: pointer;
 }
 
+header .navbar {
+  float: right;
+}
+
+header .navbar li {
+  margin: 0 15px;
+}
+
+header .navbar a{
+  color: #F38130;
+  font-weight: bold;
+}
+
 .main-container{
     padding-top: 40px;
 }

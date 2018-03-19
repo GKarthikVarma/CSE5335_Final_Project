@@ -9,7 +9,10 @@
 
 <header>
 	<nav>
-		<div class="main-wrapper">
+		<div id="title">
+		MavConnect
+	</div>
+		<div class="navbar">
 			<ul>
 				<li><a href="profile.php">Profile</a></li>
 				<li><a href="search.php">Search</a></li>
