@@ -257,7 +257,8 @@ header .nav-login a{
 #title {
   color: #fff;
   float: left;
-  padding: 15px;
+  padding: 20px;
+  vertical-align: middle;
   font-family: Arial;
   font-weight: bold;
   font-size: 24px;
