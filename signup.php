@@ -12,6 +12,8 @@
 			<input type="text" name="email" placeholder="E-mail">
 			<input type="text" name="uid" placeholder="Username">
 			<input type="password" name="pwd" placeholder="Password"><br /><br />
+			<input type="radio" name="type" value="student" checked="checked"> Student
+			<input type="radio" name="type" value="Recruiter"> Recruiter
 			<button type = 'submit' name = 'submit'>Signup</button>
 		</form>
 	</center>
