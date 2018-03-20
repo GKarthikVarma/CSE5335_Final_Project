@@ -4,5 +4,11 @@ CREATE TABLE students (
     user_last varchar(256) not null,
     user_email varchar(256) not null,
     user_uid varchar(256) not null,
-    user_pwd varchar(256) not null
+    user_pwd varchar(256) not null,
+    user_degree varchar(256),
+    user_degree_in varchar(256),
+    user_graduation_semester varchar(256),
+    user_graduation_year varchar(256),
+    user_skills varchar(1024),
+    user_relocation boolean
 );

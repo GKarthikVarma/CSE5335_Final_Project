@@ -2,9 +2,8 @@
 
 <?php
 	include_once 'header_login.php';
+
 ?>
-
-
 
 	<div class="main-container">
 		<a href="edit_profile.php">Edit Profile</a><br /><br />
@@ -12,13 +11,15 @@
 		<div class="profile-container">
 		<center>
 			<img src="images/blank-profile-image.png" id="profile-photo">
-<h1>Ivan Huang</h1>
-<h2>Masters in Computer Science</h2>
+
+
+<h1><?php echo("{$_SESSION['u_first']}")?> <?php echo("{$_SESSION['u_last']}")?></h1>
+<h2><?php echo("{$_SESSION['u_degree']}")?> in <?php echo("{$_SESSION['u_degree_in']}")?></h2>
 <br />
-Graduation: Spring 2018<br /><br />
-Skills: Java, Python, HTML, CSS, PHP, JavaScript, MySQL, Android Development, iOS Development<br /><br />
-Open to Relocation<br /><br />
-Email: ivan.huang@mavs.uta.edu<br /><br /><br />
+Graduation: <?php echo("{$_SESSION['u_graduation_semester']}")?> of <?php echo("{$_SESSION['u_graduation_year']}")?><br /><br />
+<?php echo("{$_SESSION['u_skills']}")?><br /><br />
+Open to Relocation: <?php echo("{$_SESSION['u_relocation']}")?><br /><br />
+Email: <?php echo("{$_SESSION['u_email']}")?><br /><br /><br />
 <a href="#resume.pdf">Download Resume</a>
 </center>
 </div>

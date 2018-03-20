@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +16,13 @@
 			MavConnect
 		</div>
 			<div class='nav-login'>
-				<form action="profile.php" method="post">
+
+				<form action="background/login.php" method="POST">
 					<input type="text" name="uid" placeholder="Username/email">
 					<input type="password" name="pwd" placeholder="Password">
-					<button type='submit' name='submit'>Login</button>
-				</form>
-				<a href="signup.php">Signup</a>
+					<button type="submit" name="submit">Login</button>
+					</form>
+					<a href="signup.php">Signup</a>
 			</div>
 		</div>
 	</nav>
