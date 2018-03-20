@@ -36,14 +36,23 @@ if(isset($_POST['submit'])) {
 					header("Location: ../signup.php?signup=usertaken");
 					exit();
 				} else {
-					//hashing the password
-					$hashedpwd = password_hash($pwd, PASSWORD_DEFAULT);
-					//insert the user into the database
-					$sql = "INSERT INTO students (user_first, user_last, user_email, user_uid, user_pwd) VALUES ('$first', '$last', '$email', '$uid', '$hashedpwd');";
+					$sql = "SELECT * FROM recruiter WHERE rec_uname='$uid';";
+					$result = mysqli_query($connection, $sql);
+					$resultcheck = mysqli_num_rows($result);
 
-					mysqli_query($connection, $sql);
-					header("Location: ../signup.php?signup=success");
-					exit();
+					if ($resultcheck > 0) {
+						header("Location: ../signup.php?signup=usertakenbyrec");
+						exit();
+					} else {
+						//hashing the password
+						$hashedpwd = password_hash($pwd, PASSWORD_DEFAULT);
+						//insert the user into the database
+						$sql = "INSERT INTO students (user_first, user_last, user_email, user_uid, user_pwd) VALUES ('$first', '$last', '$email', '$uid', '$hashedpwd');";
+
+						mysqli_query($connection, $sql);
+						header("Location: ../signup.php?signup=success");
+						exit();
+					}
 				}
 			} else if ($type == "Recruiter") {
 				$sql = "SELECT * FROM recruiter WHERE rec_uname='$uid';";
@@ -51,18 +60,26 @@ if(isset($_POST['submit'])) {
 				$resultcheck = mysqli_num_rows($result);
 
 				if ($resultcheck > 0) {
-					header("Location: ../signup.php?signup=usertaken");
+					header("Location: ../signup.php?signup=usertakenbyrec");
 					exit();
 				} else {
-					//hashing the password
-					$hashedpwd = password_hash($pwd, PASSWORD_DEFAULT);
-					//insert the user into the database
-					$sql = "INSERT INTO recruiter (rec_first, rec_last, rec_email, rec_uname, rec_pass) VALUES ('$first', '$last', '$email', '$uid', '$hashedpwd');";
+					$sql = "SELECT * FROM students WHERE user_uid='$uid';";
+					$result = mysqli_query($connection, $sql);
+					$resultcheck = mysqli_num_rows($result);
 
-					mysqli_query($connection, $sql);
-					header("Location: ../signup.php?signup=successrec");
-					exit();
+					if ($resultcheck > 0) {
+						header("Location: ../signup.php?signup=usertakenbystu");
+						exit();
+					} else {
+						//hashing the password
+						$hashedpwd = password_hash($pwd, PASSWORD_DEFAULT);
+						//insert the user into the database
+						$sql = "INSERT INTO recruiter (rec_first, rec_last, rec_email, rec_uname, rec_pass) VALUES ('$first', '$last', '$email', '$uid', '$hashedpwd');";
+						mysqli_query($connection, $sql);
+						header("Location: ../signup.php?signup=successrec");
+						exit();
 				} 
+			}
 			}
 
 		} 

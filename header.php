@@ -7,13 +7,12 @@ session_start();
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <header>
 	<nav>
 		<div class="main-wrapper">
-			<div class="title">
+			<div id="title">
 			MavConnect
 		</div>
 			<div class='nav-login'>

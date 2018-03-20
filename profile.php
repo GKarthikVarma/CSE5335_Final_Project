@@ -2,6 +2,7 @@
 
 <?php
 	include_once 'header_login.php';
+
 ?>
 
 	<div class="main-container">
