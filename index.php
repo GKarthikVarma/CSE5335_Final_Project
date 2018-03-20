@@ -2,11 +2,14 @@
 	include_once 'header.php';
 ?>
 
-<section class='main-container'>
-	<div class='main-wrapper'>
-		<h2>Home</h2>
-	</div>
-</section>
+<body>
+<div class='login-container'>
+		<center>
+		<div id='home-logo'>
+		</div>
+
+	</center>
+</div>
 
 <?php
 	include_once 'footer.php';
