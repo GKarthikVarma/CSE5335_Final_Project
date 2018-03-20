@@ -12,3 +12,29 @@ CREATE TABLE students (
     user_skills varchar(1024),
     user_relocation boolean
 );
+
+
+CREATE TABLE recruiter (
+	rec_id int(10) not null AUTO_INCREMENT PRIMARY KEY,
+    rec_first varchar(256) not null,
+    rec_last varchar(256) not null,
+    rec_email varchar(256) not null,
+    rec_uname varchar(256) not null,
+    rec_pass varchar(256) not null
+);
+
+
+CREATE TABLE job_student (
+	user_id int(10),
+    job_id int(10)
+);
+
+
+CREATE TABLE jobs (
+    job_id int(10) not null AUTO_INCREMENT PRIMARY KEY,
+    rec_id int(10),
+    job_location varchar(256),
+    job_salary int(10),
+    job_keyword varchar(256),
+    job_description varchar(1024)
+);
