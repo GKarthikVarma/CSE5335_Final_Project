@@ -8,7 +8,7 @@
 
   <div class="profile-container">
 
-  <form class="edit-prof-form" action="background/edit_profile.php" method="post">
+  <form class="formA" action="background/edit_profile.php" method="post">
     <input type="hidden" name="id" value=<?php echo("{$_SESSION['u_id']}")?>>
     <input type="hidden" name="uid" value=<?php echo("{$_SESSION['u_uid']}")?>>
     <label>First Name:</label>
