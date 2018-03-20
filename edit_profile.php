@@ -7,30 +7,30 @@
   <div class="main-container">
 
   <div class="profile-container">
-
-  <form class="edit-prof-form" action="background/edit_profile.php" method="post">
+		<center><h1>Edit Profile</h1><br /><br /></center>
+  <form class="formA" action="background/edit_profile.php" method="post">
     <input type="hidden" name="id" value=<?php echo("{$_SESSION['u_id']}")?>>
     <input type="hidden" name="uid" value=<?php echo("{$_SESSION['u_uid']}")?>>
-    <label>First Name:</label>
+    <label>First Name:</label><br />
     <input type="text" name="first_name"></input><br /><br />
-    <label>Last Name:</label>
+    <label>Last Name:</label><br />
     <input type="text" name="last_name"></input><br /><br />
-    <label>E-Mail:</label>
+    <label>E-Mail:</label><br />
     <input type="text" name="email"></input><br /><br />
-    <label>Degree Type:</label>
+    <label>Degree Type:</label><br />
     <select name="degree_type">
-      <option value="associates">Associates</option>
-      <option value="bachelors">Bachelors</option>
-      <option value="masters" selected="selected">Masters</option>
-      <option value="doctorate">Doctorate</option>
+      <option value="Associates">Associates</option>
+      <option value="Bachelors">Bachelors</option>
+      <option value="Masters">Masters</option>
+      <option value="Doctorate">Doctorate</option>
     </select>
     in
     <input type="text" name="major"></input>
     <br /><br />
-    <label>Graduation:</label>
+    <label>Graduation:</label><br />
     <select name="grad_semester">
-      <option value="fall">Fall</option>
-      <option value="spring" selected="selected">Spring</option>
+      <option value="Fall">Fall</option>
+      <option value="Spring">Spring</option>
     </select>
     of
     <input type="number" name="grad_year"></input><br /><br />
