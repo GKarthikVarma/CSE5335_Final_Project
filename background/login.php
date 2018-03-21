@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
 						$_SESSION['u_email'] = $row['rec_email'];
 						$_SESSION['u_uid'] = $row['rec_uname'];
 						$_SESSION['u_type'] = "recruiter";
-						header("Location: ../profile.php?login=successrec");
+						header("Location: ../view_posted_jobs.php?login=successrec");
 						exit();	
 					}
 				}

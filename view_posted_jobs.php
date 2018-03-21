@@ -7,8 +7,8 @@
   <div class="main-container">
     <div id='sidebar'>
       <center>
-        Recruiter Name<br /><br />
-        Recruiter email<br /><br />
+         <?php echo("{$_SESSION['u_first']}")?> <?php echo("{$_SESSION['u_last']}")?><br /><br />
+        <?php echo("{$_SESSION['u_email']}")?><br /><br />
         <a href="edit_recruiter_profile.php">Edit</a></center>
     </div>
     <div id='job-listings'>
