@@ -13,7 +13,7 @@ session_start();
 <header>
 	<nav>
 		<div class="main-wrapper">
-		<div id="title">
+		<div class="title">
 		MavConnect
 	</div>
 	<?php
