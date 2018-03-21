@@ -15,26 +15,29 @@
 <h1><?php echo("{$_SESSION['u_first']}")?> <?php echo("{$_SESSION['u_last']}")?></h1>
 
 <?php
- if ($_SESSION['u_degree'] == null || $_SESSION['u_degree_in']  == null){
 
- }else{
- 	echo '<h2>' .$_SESSION["u_degree"] . ' in ' .$_SESSION["u_degree_in"] . '</h2>';
- }
- if ($_SESSION['u_graduation_semester'] == null || $_SESSION['u_graduation_year']  == null){
+if($_SESSION['u_type'] == "student"){
+ 	if ($_SESSION['u_degree'] == null || $_SESSION['u_degree_in']  == null){
 
- }else{
- 	echo 'Graduation: '.$_SESSION["u_graduation_semester"]. ' of ' .$_SESSION["u_graduation_year"] .'<br /><br />';
- }
+ 	}else{
+ 		echo '<h2>' .$_SESSION["u_degree"] . ' in ' .$_SESSION["u_degree_in"] . '</h2>';
+ 	}
+ 	if ($_SESSION['u_graduation_semester'] == null || $_SESSION['u_graduation_year']  == null){
 
-  if ( $_SESSION['u_skills']  == null){
+ 	}else{
+ 		echo 'Graduation: '.$_SESSION["u_graduation_semester"]. ' of ' .$_SESSION["u_graduation_year"] .'<br /><br />';
+ 	}
 
- }else{
- 	echo ''.$_SESSION["u_skills"].'<br /><br /> Open to Relocation: ';
-	if ($_SESSION['u_relocation'] == 0) {
-		echo 'NO <br /><br />';
-	} else {
-		echo 'YES <br /><br />';
-	}
+  	if ( $_SESSION['u_skills']  == null){
+
+ 	}else{
+ 		echo ''.$_SESSION["u_skills"].'<br /><br /> Open to Relocation: ';
+		if ($_SESSION['u_relocation'] == 0) {
+			echo 'NO <br /><br />';
+		} else {
+			echo 'YES <br /><br />';
+		}
+ 	}
  }
 
 ?>
