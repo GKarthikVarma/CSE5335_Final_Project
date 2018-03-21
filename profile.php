@@ -14,7 +14,7 @@
 
 <h1><?php echo("{$_SESSION['u_first']}")?> <?php echo("{$_SESSION['u_last']}")?></h1>
 
-<?php  
+<?php
  if ($_SESSION['u_degree'] == null || $_SESSION['u_degree_in']  == null){
 
  }else{
