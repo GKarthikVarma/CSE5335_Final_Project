@@ -10,15 +10,13 @@ For security purposes, students can only create accounts with a valid UTA email 
 The website is being designed with a modern perspective in mind; it will be adaptive-responsive, so that it can be viewed from any device. It should run on Edge, Chrome, Firefox, and Safari. It will be written in web-based languages: HTML5, CSS, PHP, JavaScript and we will use an SQL database.
 
 
-To Run the website place the contents of Team5_code in the htdocs of mysql database and follow the below steps
+## To Run the website place the contents of Team5_code in the htdocs of mysql database and follow the below steps
 
-##############
-Configure the website to connect to a database by edition the below file
+* Configure the website to connect to a database by edition the below file
 background/dbh.php
 
-Enter the appropriate mysql username and password for the website to be able to connect to the database.
+* Enter the appropriate mysql username and password for the website to be able to connect to the database.
 
-##############
-MYSQL DATABASE:
+## MYSQL DATABASE:
 Create a table called "loginsystem"
 Run the code from "loginsystem.sql" in loginsystem to generate the tables and populate them with data
