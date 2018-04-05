@@ -140,6 +140,7 @@ table#jobs  td {
 
 table#jobs tr:nth-child(2n+1) {
   background-color: #eee;
+  /*color: #fff;*/
 }
 
 /* NAV BAR STYLES */
@@ -422,7 +423,6 @@ header .nav-login {
   height: 80px;
   resize: none;
   font-size: 14px;
-  padding: 10px 10px;
 }
 
 .formA select {
@@ -534,17 +534,16 @@ body a {
 
 #sidebar {
   float: left;
-  width: 20%;
+  width: 15%;
   border: 4px solid #ccc;
   background-color: #fff;
   margin: 10px;
   padding: 10px;
-  font-size: 12px;
 }
 
 #job-listings {
   float: left;
-  width: 65%;
+  width: 70%;
   border: 4px solid #ccc;
   background-color: #fff;
   margin: 10px;

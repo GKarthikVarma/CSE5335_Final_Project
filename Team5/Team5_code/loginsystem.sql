@@ -31,12 +31,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `jobs` (
   `job_id` int(10) NOT NULL,
   `rec_id` int(10) DEFAULT NULL,
-  `job_title` varchar(128) DEFAULT NULL,
-  `company_name` varchar(64) DEFAULT NULL,
-  `city` varchar(64) DEFAULT NULL,
-  `state` varchar(32) DEFAULT NULL,
-  `job_skills` varchar(256) DEFAULT NULL,
+  `job_location` varchar(256) DEFAULT NULL,
   `job_salary` int(10) DEFAULT NULL,
+  `job_keyword` varchar(256) DEFAULT NULL,
   `job_description` varchar(1024) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

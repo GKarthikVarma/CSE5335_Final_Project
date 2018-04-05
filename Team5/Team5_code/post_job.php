@@ -8,17 +8,17 @@
       <h1>Create a Job Listing</h1>
     </center>
     <br /><br />
-      <form class='formA' action='create_job.php' method='post'>
+      <form class='formA'>
         <label>Job Title</label><br />
         <input type='text' name='title'></input><br /><br />
         <label>Company Name</label><br />
         <input type='text' name='company'></input><br /><br />
         <label>Job Description (max 1024 chars)</label><br />
-        <textarea name='description'></textarea><br /><br />
+        <textarea></textarea><br /><br />
         <label>City</label><br />
         <input type='text' name='city'></input><br /><br />
         <label>State</label><br />
-        <select name='state'>
+        <select>
         	<option value="AL">Alabama</option>
         	<option value="AK">Alaska</option>
         	<option value="AZ">Arizona</option>
@@ -72,7 +72,7 @@
         	<option value="WY">Wyoming</option>
         </select><br /><br />
         <label>Skills (separate by comma)</label><br />
-        <textarea name='skills'></textarea><br /><br />
+        <textarea></textarea><br /><br />
         <label>Est. Salary (optional)</label><br />
         <input type='text' name='salary'></input><br /><br />
         <center><button type='submit'>Submit</button></center>
