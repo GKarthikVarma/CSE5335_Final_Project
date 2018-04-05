@@ -40,7 +40,6 @@ session_start();
 
 	</div>
 	</nav>
-	<div class="nav-bottom"></div>
 </header>
 
 <body>

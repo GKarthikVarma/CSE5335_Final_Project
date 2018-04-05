@@ -98,6 +98,14 @@ table {
 }
 
 /* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
 
 input, select {
     vertical-align:middle;
@@ -122,35 +130,8 @@ body {
   background-color: #eee;
 }
 
-table#jobs {
-  width: 100%;
-}
-
-table#jobs  th {
-  padding: 10px;
-  background-color: #F38130;
-  color: #fff;
-  text-align: left;
-}
-
-table#jobs  td {
-  padding: 10px;
-  font-size: 12px;
-}
-
-table#jobs tr:nth-child(2n+1) {
-  background-color: #eee;
-  /*color: #fff;*/
-}
 
 /* NAV BAR STYLES */
-
-header div.nav-bottom {
-  width: 100%;
-  height: 5px;
-  background-color: #000;
-}
-
 @media only screen and (max-width: 480px) {
   header nav{
       width: 100%;
@@ -223,7 +204,7 @@ header .nav-login {
       float: left;
       font-family: arial;
       font-size: 16px;
-      color: #FFF;
+      color: #F38130;
       line-height: 63px;
       cursor: pointer;
   }
@@ -268,7 +249,7 @@ header .nav-login {
       font-family: arial;
       font-size: 16px;
       color: #111;
-      line-height: 60px;
+      line-height: 63px;
   }
 
   header .nav-login {
@@ -320,7 +301,7 @@ header .nav-login {
       float: left;
       font-family: arial;
       font-size: 16px;
-      color: #FFF;
+      color: #F38130;
       line-height: 63px;
       cursor: pointer;
   }
@@ -331,16 +312,11 @@ header .nav-login {
   }
 
   header .navbar li {
-    padding: 0 15px;
-  }
-
-  header .navbar li:hover {
-    padding: 0 15px;
-    background-color: #F38130;
+    margin: 0 15px;
   }
 
   header .navbar a{
-    color: #FFF;
+    color: #F38130;
     font-weight: bold;
   }
 
@@ -532,20 +508,11 @@ body a {
   color:  #ffffff;
 }
 
-#sidebar {
-  float: left;
-  width: 15%;
-  border: 4px solid #ccc;
-  background-color: #fff;
-  margin: 10px;
-  padding: 10px;
-}
 
-#job-listings {
-  float: left;
-  width: 70%;
+#search-listings {
+   width: 70%;
   border: 4px solid #ccc;
   background-color: #fff;
-  margin: 10px;
-  padding: 10px;
+  margin: 70px;
+  padding: 20px; 
 }

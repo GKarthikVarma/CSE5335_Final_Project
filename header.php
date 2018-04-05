@@ -26,5 +26,4 @@ session_start();
 			</div>
 		</div>
 	</nav>
-	<div class="nav-bottom"></div>
 </header>
