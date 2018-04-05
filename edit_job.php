@@ -1,24 +1,36 @@
 <?php
 	include_once 'header_login.php';
+	include_once 'background/dbh.php';
 ?>
 
 <div class='main-container'>
   <div class='profile-container'>
     <center>
-      <h1>Create a Job Listing</h1>
+      <h1>Edit a Listing</h1>
     </center>
     <br /><br />
-      <form class='formA' action='create_job.php' method='post'>
+		<?php
+				$job_id=$_GET['id'];
+				$sql = "SELECT * FROM jobs WHERE job_id=".$job_id." AND rec_id=".$_SESSION['uid'].";";
+				$result = mysqli_query($connection, $sql);
+				if(mysqli_num_rows($result) == 1) {
+					$row=mysqli_fetch_assoc($result);
+				} else {
+					echo "JOB DOES NOT EXIST!";
+				}
+		 ?>
+      <form class='formA' action='update_job.php' method='post'>
+				<input type='hidden' name='job_id' value='<?php echo $job_id;?>' />
         <label>Job Title</label><br />
-        <input type='text' name='title'></input><br /><br />
+        <input type='text' name='title' value='<?php echo $row['job_title']; ?>'></input><br /><br />
         <label>Company Name</label><br />
-        <input type='text' name='company'></input><br /><br />
+        <input type='text' name='company' value='<?php echo $row['company_name']; ?>'></input><br /><br />
         <label>Job Description (max 1024 chars)</label><br />
-        <textarea name='description'></textarea><br /><br />
+        <textarea name='description'><?php echo $row['job_description']; ?></textarea><br /><br />
         <label>City</label><br />
-        <input type='text' name='city'></input><br /><br />
+        <input type='text' name='city' value='<?php echo $row['city']; ?>'></input><br /><br />
         <label>State</label><br />
-        <select name='state'>
+        <select id='state' name='state'>
         	<option value="AL">Alabama</option>
         	<option value="AK">Alaska</option>
         	<option value="AZ">Arizona</option>
@@ -70,12 +82,21 @@
         	<option value="WV">West Virginia</option>
         	<option value="WI">Wisconsin</option>
         	<option value="WY">Wyoming</option>
-        </select><br /><br />
+        </select>
+
+				<script>
+					document.getElementById('state').selectedIndex=<?php echo $states[$row['state']]; ?>;
+				</script>
+
+				<br /><br />
         <label>Skills (separate by comma)</label><br />
-        <textarea name='skills'></textarea><br /><br />
+        <textarea name='skills'><?php echo $row['job_skills']; ?></textarea><br /><br />
         <label>Est. Salary (optional)</label><br />
-        <input type='text' name='salary'></input><br /><br />
-        <center><button type='submit'>Submit</button></center>
+        <input type='text' name='salary' value='<?php echo $row['job_salary']; ?>'></input><br /><br /><br />
+				<center>
+					<a href="delete_job.php?id=<?php echo $job_id; ?>">Remove Listing</a><br /><br />
+					<button type='submit'>Save</button>
+				</center>
       </form>
 
   </div>

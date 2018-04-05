@@ -98,14 +98,6 @@ table {
 }
 
 /* change border colour to suit your needs */
-hr {
-    display:block;
-    height:1px;
-    border:0;
-    border-top:1px solid #cccccc;
-    margin:1em 0;
-    padding:0;
-}
 
 input, select {
     vertical-align:middle;
@@ -130,7 +122,6 @@ body {
   background-color: #eee;
 }
 
-
 table#jobs {
   width: 100%;
 }
@@ -149,10 +140,17 @@ table#jobs  td {
 
 table#jobs tr:nth-child(2n+1) {
   background-color: #eee;
+  /*color: #fff;*/
 }
 
-
 /* NAV BAR STYLES */
+
+header div.nav-bottom {
+  width: 100%;
+  height: 5px;
+  background-color: #000;
+}
+
 @media only screen and (max-width: 480px) {
   header nav{
       width: 100%;
@@ -225,7 +223,7 @@ header .nav-login {
       float: left;
       font-family: arial;
       font-size: 16px;
-      color: #F38130;
+      color: #FFF;
       line-height: 63px;
       cursor: pointer;
   }
@@ -270,7 +268,7 @@ header .nav-login {
       font-family: arial;
       font-size: 16px;
       color: #111;
-      line-height: 63px;
+      line-height: 60px;
   }
 
   header .nav-login {
@@ -322,7 +320,7 @@ header .nav-login {
       float: left;
       font-family: arial;
       font-size: 16px;
-      color: #F38130;
+      color: #FFF;
       line-height: 63px;
       cursor: pointer;
   }
@@ -333,11 +331,16 @@ header .nav-login {
   }
 
   header .navbar li {
-    margin: 0 15px;
+    padding: 0 15px;
+  }
+
+  header .navbar li:hover {
+    padding: 0 15px;
+    background-color: #F38130;
   }
 
   header .navbar a{
-    color: #F38130;
+    color: #FFF;
     font-weight: bold;
   }
 
@@ -420,7 +423,6 @@ header .nav-login {
   height: 80px;
   resize: none;
   font-size: 14px;
-  padding: 10px 10px;
 }
 
 .formA select {
@@ -532,27 +534,18 @@ body a {
 
 #sidebar {
   float: left;
-  width: 20%;
+  width: 15%;
   border: 4px solid #ccc;
   background-color: #fff;
   margin: 10px;
   padding: 10px;
-  font-size: 12px;
 }
 
 #job-listings {
   float: left;
-  width: 65%;
+  width: 70%;
   border: 4px solid #ccc;
   background-color: #fff;
-  margin: 70px;
-  padding: 20px; 
-}
-
-#search-listings {
-   width: 70%;
-  border: 4px solid #ccc;
-  background-color: #fff;
-  margin: 70px;
-  padding: 20px; 
+  margin: 10px;
+  padding: 10px;
 }
