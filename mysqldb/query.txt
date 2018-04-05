@@ -30,7 +30,7 @@ CREATE TABLE job_student (
 );
 
 CREATE TABLE `jobs` (
-  `job_id` int(10) NOT NULL,
+  `job_id` int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `rec_id` int(10) DEFAULT NULL,
   `job_title` varchar(64) DEFAULT NULL,
   `company_name` varchar(64) DEFAULT NULL,
