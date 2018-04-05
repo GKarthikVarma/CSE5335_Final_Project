@@ -11,6 +11,7 @@
 		<?php
 			include_once 'view_profile.php'
 			?>
+
 </div>
 </body>
 </html>

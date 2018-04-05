@@ -93,7 +93,6 @@ $states = array('AL'=>0,
 
 	</div>
 	</nav>
-	<div class="nav-bottom"></div>
 </header>
 
 <body>
