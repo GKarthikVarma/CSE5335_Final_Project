@@ -10,7 +10,9 @@ CREATE TABLE students (
     user_graduation_semester varchar(256),
     user_graduation_year varchar(256),
     user_skills varchar(1024),
-    user_relocation boolean
+    user_relocation boolean,
+    user_photo varchar(256),
+    user_resume varchar(256)
 );
 
 
