@@ -59,7 +59,7 @@ if (isset($_POST['search'])){
 								$sql="SELECT * FROM job_student WHERE job_id=".$row['job_id']." AND user_id=".$_SESSION['u_id'].";";
 								$applied = (mysqli_num_rows(mysqli_query($connection, $sql)) > 0);
           			echo "<tr>\n";
-								if($applied) {
+								if($applied && $_SESSION['u_type'] == "student") {
 									echo "<td>".$row['job_title']." <span style='color: green;'>&#10004;</span></td>\n";
 								} else {
 									echo "<td>".$row['job_title']."</td>\n";
