@@ -24,8 +24,8 @@
     echo "<th></th>";
     while($row = mysqli_fetch_assoc($result)) {
         $sql = "SELECT * FROM jobs WHERE job_id=".$row['job_id'].";";
-        $result=mysqli_query($connection, $sql);
-        $row = mysqli_fetch_assoc($result);
+        $result2=mysqli_query($connection, $sql);
+        $row = mysqli_fetch_assoc($result2);
         echo "<tr>\n";
         echo "<td>".$row['job_title']."</td>\n";
 				echo "<td>".$row['company_name']."</td>\n";
