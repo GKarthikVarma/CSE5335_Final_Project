@@ -13,7 +13,7 @@
 
   <div class="profile-container">
 
-  <form class="formA" action="background/edit_profile.php" method="post">
+  <form class="formA" action="background/edit_profile.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value=<?php echo("{$_SESSION['u_id']}")?>>
     <input type="hidden" name="uid" value=<?php echo("{$_SESSION['u_uid']}")?>>
     <label>First Name:</label><br />
@@ -46,10 +46,10 @@
     <input type="checkbox" name="relocation"  <?php if($row['user_relocation']==1) { echo "checked"; } ?>></input><br /><br />
 
     <label>Upload Photo</label><br />
-    <input type="file" name="image" accept="image/*"><br /><br />
+    <input type="file" name="photo"><br /><br />
 
     <label>Upload Resume</label><br />
-    <input type="file" name="image" accept=".pdf, .doc"><br /><br />
+    <input type="file" name="resume" accept=".pdf, .doc"><br /><br />
 
     <center>
     <button type="submit" name="save_profile">Save Profile</button>

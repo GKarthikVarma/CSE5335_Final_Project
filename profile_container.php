@@ -1,6 +1,6 @@
 <div class="profile-container">
 <center>
-  <img src="images/blank-profile-image.png" id="profile-photo">
+  <img src="uploads/<?php echo $photo?>" id="profile-photo">
 
 <h1><?php echo $first_name." ".$last_name; ?></h1>
 

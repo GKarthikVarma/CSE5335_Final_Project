@@ -12,6 +12,7 @@
 	$skills=$_SESSION['u_skills'];
 	$relocation = $_SESSION['u_relocation'];
 	$email = $_SESSION['u_email'];
+	$photo = $_SESSION['u_photo'];
 
 ?>
 

@@ -18,6 +18,23 @@ if(isset($_POST['save_profile'])){
 	$skills = $_POST['skills'];
 	$relocation = $_POST['relocation'];
 	$uid = $_POST['id'];
+
+
+	$photo = $_FILES['photo'];
+	$photoName = $_FILES['photo']['name'];
+	$photoTmpName = $_FILES['photo']['tmp_name'];
+	$photosize = $_FILES['photo']['size'];
+	$photoError = $_FILES['photo']['error'];
+	$photoType = $_FILES['photo']['type'];
+	$fileExt = explode(".", $photoName);
+	$fileactext = strtolower(end($fileExt));
+
+	$allow = array('jpg', 'jpeg', 'png');
+	print_r($photo);
+
+	$resume = $_FILES['resume'];
+	$resumeName = $_FILES['resume'];
+
 	if (empty($first_edit) || empty($last_edit) || empty($degree_type) || empty($major) || empty($grad_sem) || empty($grad_year) || empty($skills)) {
 		header("Location: ../edit_profile.php?fill_all");
 		exit();
@@ -27,6 +44,30 @@ if(isset($_POST['save_profile'])){
 		} else {
 			$relocation = 0;
 		}
+
+		if (in_array($fileactext, $allow)){
+			if ($photoError === 0) {
+				if ($photosize < 1000000){
+					$photoNameNew = $user_id.".".$fileactext;
+
+					$photoDestination = '../uploads/'.$photoNameNew;
+					if (move_uploaded_file($photoTmpName, $photoDestination)){
+					} else {
+						header("Location: ../edit_profile.php?$photoDestination");
+						exit();
+					}
+
+				} else {
+					echo "File too big";									
+				}
+			} else {
+				echo "There was an error uploading your file";				
+			}
+		} else {
+			echo "You cannot upload files of this type";
+		}
+
+
 
 		$_SESSION['u_id'] = $uid;
 		$_SESSION['u_first'] = $first_edit;
@@ -40,7 +81,7 @@ if(isset($_POST['save_profile'])){
 		$_SESSION['u_skills'] = $skills;
 		$_SESSION['u_relocation'] = $relocation;
 	
-		$sql = "UPDATE students set user_first='$first_edit', user_last='$last_edit', user_degree='$degree_type', user_degree_in='$major', user_graduation_semester='$grad_sem', user_email='$email', user_graduation_year='$grad_year', user_skills='$skills', user_relocation='$relocation' WHERE user_id='$uid';";
+		$sql = "UPDATE students set user_first='$first_edit', user_last='$last_edit', user_degree='$degree_type', user_degree_in='$major', user_graduation_semester='$grad_sem', user_email='$email', user_graduation_year='$grad_year', user_skills='$skills', user_relocation='$relocation', user_photo='$photoNameNew' WHERE user_id='$uid';";
 		$result = mysqli_query($connection, $sql);
 		header("Location: ../profile.php?login=success");
 		exit();	
