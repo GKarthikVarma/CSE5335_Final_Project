@@ -27,7 +27,8 @@ if(isset($_POST['save_profile'])){
 	$photoError = $_FILES['photo']['error'];
 	$photoType = $_FILES['photo']['type'];
 	$fileExt = explode(".", $photoName);
-	$fileactext = strtolower(end($fileExt));
+	$fileactext = strtolower($fileExt[sizeof($fileExt)-1]);
+
 
 	$allow = array('jpg', 'jpeg', 'png');
 
@@ -55,49 +56,59 @@ if(isset($_POST['save_profile'])){
 			$relocation = 0;
 		}
 
-		if (in_array($fileactext, $allow)){
-			if ($photoError === 0) {
-				if ($photosize < 1000000){
-					$photoNameNew = $user_id.".".$fileactext;
+		if($photoName == null) {
+			$photoNameNew = null;
+		} else {
+			if (in_array($fileactext, $allow)){
+				if ($photoError === 0) {
+					if ($photosize < 1000000){
+						$photoNameNew = $user_id.".".$fileactext;
 
-					$photoDestination = '../uploads/'.$photoNameNew;
-					if (move_uploaded_file($photoTmpName, $photoDestination)){
+						$photoDestination = '../uploads/'.$photoNameNew;
+						if (move_uploaded_file($photoTmpName, $photoDestination)){
+						} else {
+							header("Location: ../edit_profile.php?$photoDestination");
+							exit();
+						}
+
 					} else {
-						header("Location: ../edit_profile.php?$photoDestination");
-						exit();
+						echo "File too big";
 					}
-
 				} else {
-					echo "File too big";									
+					echo "There was an error uploading your file";
 				}
 			} else {
-				echo "There was an error uploading your file";				
+				echo "You cannot upload files of this type";
 			}
-		} else {
-			echo "You cannot upload files of this type";
 		}
 
-		if (in_array($resumeacttext, $allow_resume)){
-			if ($resumeError === 0) {
-				if ($resumeSize < 1000000000){
-					$resumeNewName = $user_id."_resume".".".$resumeacttext;
 
-					$resume_destination = '../uploads/'.$resumeNewName;
-					if (move_uploaded_file($resumeTmpName, $resume_destination)){
+		if($resumeName==null) {
+			$resumeNameNew = null;
+		} else {
+			if (in_array($resumeacttext, $allow_resume)){
+				if ($resumeError === 0) {
+					if ($resumeSize < 1000000000){
+						$resumeNewName = $user_id."_resume".".".$resumeacttext;
+
+						$resume_destination = '../uploads/'.$resumeNewName;
+						if (move_uploaded_file($resumeTmpName, $resume_destination)){
+						} else {
+							header("Location: ../edit_profile.php?$resume_destination");
+							exit();
+						}
+
 					} else {
-						header("Location: ../edit_profile.php?$resume_destination");
-						exit();
+						echo "File too big";
 					}
-
 				} else {
-					echo "File too big";									
+					echo "There was an error uploading your file";
 				}
 			} else {
-				echo "There was an error uploading your file";				
+				echo "You cannot upload files of this type";
 			}
-		} else {
-			echo "You cannot upload files of this type";
 		}
+
 
 
 		$_SESSION['u_id'] = $uid;
@@ -111,11 +122,21 @@ if(isset($_POST['save_profile'])){
 		$_SESSION['u_graduation_year'] = $grad_year;
 		$_SESSION['u_skills'] = $skills;
 		$_SESSION['u_relocation'] = $relocation;
-	
-		$sql = "UPDATE students set user_first='$first_edit', user_last='$last_edit', user_degree='$degree_type', user_degree_in='$major', user_graduation_semester='$grad_sem', user_email='$email', user_graduation_year='$grad_year', user_skills='$skills', user_relocation='$relocation', user_photo='$photoNameNew', user_resume='$resumeNewName' WHERE user_id='$uid';";
+		$_SESSION['u_photo'] = $photoNameNew;
+		$_SESSION['u_resume'] = $resumeNewName;
+
+		if($photoNameNew == null && $resumeNewName != null) {
+			$sql = "UPDATE students set user_first='$first_edit', user_last='$last_edit', user_degree='$degree_type', user_degree_in='$major', user_graduation_semester='$grad_sem', user_email='$email', user_graduation_year='$grad_year', user_skills='$skills', user_relocation='$relocation', user_resume='$resumeNewName' WHERE user_id='$uid';";
+		} else if ($photoNameNew !=null && $resumeNewName == null) {
+			$sql = "UPDATE students set user_first='$first_edit', user_last='$last_edit', user_degree='$degree_type', user_degree_in='$major', user_graduation_semester='$grad_sem', user_email='$email', user_graduation_year='$grad_year', user_skills='$skills', user_relocation='$relocation', user_photo='$photoNameNew' WHERE user_id='$uid';";
+		} else if ($photoNameNew == null && $resumeNewName == null){
+			$sql = "UPDATE students set user_first='$first_edit', user_last='$last_edit', user_degree='$degree_type', user_degree_in='$major', user_graduation_semester='$grad_sem', user_email='$email', user_graduation_year='$grad_year', user_skills='$skills', user_relocation='$relocation' WHERE user_id='$uid';";
+		} else {
+			$sql = "UPDATE students set user_first='$first_edit', user_last='$last_edit', user_degree='$degree_type', user_degree_in='$major', user_graduation_semester='$grad_sem', user_email='$email', user_graduation_year='$grad_year', user_skills='$skills', user_relocation='$relocation', user_photo='$photoNameNew', user_resume='$resumeNewName' WHERE user_id='$uid';";
+		}
 		$result = mysqli_query($connection, $sql);
 		header("Location: ../profile.php?login=success");
-		exit();	
+		exit();
 	}
 
 } else {
