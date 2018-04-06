@@ -1,6 +1,14 @@
 <div class="profile-container">
 <center>
-  <img src="uploads/<?php echo $photo; ?>" id="profile-photo">
+
+<?php
+
+  if($photo != null) {
+    echo   "<img src='uploads/".$photo."' id='profile-photo'>";
+  } else {
+    echo  "<img src='images/blank-profile-image.png' id='profile-photo'>";
+  }
+ ?>
 
 <h1><?php echo $first_name." ".$last_name; ?></h1>
 <?php
@@ -27,7 +35,13 @@ if ($relocation == 0) {
 
 ?>
 <br />
-Email: <?php echo $email; ?><br /><br /><br />
-<a href="uploads/<?php echo $resume; ?>">Download Resume </a>
+Email: <?php echo $email; ?><br />
+<?php
+
+if($resume != null) {
+  echo "<br /><br /><a href='uploads".$resume."'>Download Resume </a>";
+}
+
+ ?>
 </center>
 </div>

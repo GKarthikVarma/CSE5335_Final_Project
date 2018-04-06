@@ -20,7 +20,11 @@
     if(mysqli_num_rows($result) > 0) {
       while($row=mysqli_fetch_assoc($result)) {
         echo "<div class='profile-container'>\n";
-        echo "<img src='images/blank-profile-image.png' class='profile-thumbnail'>";
+				if($row['user_photo']==null) {
+					echo "<img src='images/blank-profile-image.png' class='profile-thumbnail'>";
+				} else {
+					echo "<img src='uploads/".$row['user_photo']."' class='profile-thumbnail'>";
+				}
         echo "<div class='applicant-info'>".$row['user_first']." ".$row['user_last']."</div>";
         echo "<div class='applicant-info'>".$row['user_degree']." in ".$row['user_degree_in']."</div>";
         echo "<div class='applicant-info'>".$row['user_graduation_semester']." of ".$row['user_graduation_year']."</div>";
