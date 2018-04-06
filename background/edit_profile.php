@@ -30,10 +30,20 @@ if(isset($_POST['save_profile'])){
 	$fileactext = strtolower(end($fileExt));
 
 	$allow = array('jpg', 'jpeg', 'png');
-	print_r($photo);
 
 	$resume = $_FILES['resume'];
-	$resumeName = $_FILES['resume'];
+	$resumeName = $_FILES['resume']['name'];
+	$resumeTmpName = $_FILES['resume']['tmp_name'];
+	$resumeSize = $_FILES['resume']['size'];
+	$resumeError = $_FILES['resume']['error'];
+	$resumetype = $_FILES['resume']['type'];
+
+	$resumeExt = explode(".", $resumeName);
+	$resumeacttext = strtolower(end($resumeExt));
+
+	$allow_resume = array('pdf', 'docx');
+
+
 
 	if (empty($first_edit) || empty($last_edit) || empty($degree_type) || empty($major) || empty($grad_sem) || empty($grad_year) || empty($skills)) {
 		header("Location: ../edit_profile.php?fill_all");
@@ -67,6 +77,27 @@ if(isset($_POST['save_profile'])){
 			echo "You cannot upload files of this type";
 		}
 
+		if (in_array($resumeacttext, $allow_resume)){
+			if ($resumeError === 0) {
+				if ($resumeSize < 1000000000){
+					$resumeNewName = $user_id."_resume".".".$resumeacttext;
+
+					$resume_destination = '../uploads/'.$resumeNewName;
+					if (move_uploaded_file($resumeTmpName, $resume_destination)){
+					} else {
+						header("Location: ../edit_profile.php?$resume_destination");
+						exit();
+					}
+
+				} else {
+					echo "File too big";									
+				}
+			} else {
+				echo "There was an error uploading your file";				
+			}
+		} else {
+			echo "You cannot upload files of this type";
+		}
 
 
 		$_SESSION['u_id'] = $uid;
@@ -81,7 +112,7 @@ if(isset($_POST['save_profile'])){
 		$_SESSION['u_skills'] = $skills;
 		$_SESSION['u_relocation'] = $relocation;
 	
-		$sql = "UPDATE students set user_first='$first_edit', user_last='$last_edit', user_degree='$degree_type', user_degree_in='$major', user_graduation_semester='$grad_sem', user_email='$email', user_graduation_year='$grad_year', user_skills='$skills', user_relocation='$relocation', user_photo='$photoNameNew' WHERE user_id='$uid';";
+		$sql = "UPDATE students set user_first='$first_edit', user_last='$last_edit', user_degree='$degree_type', user_degree_in='$major', user_graduation_semester='$grad_sem', user_email='$email', user_graduation_year='$grad_year', user_skills='$skills', user_relocation='$relocation', user_photo='$photoNameNew', user_resume='$resumeNewName' WHERE user_id='$uid';";
 		$result = mysqli_query($connection, $sql);
 		header("Location: ../profile.php?login=success");
 		exit();	

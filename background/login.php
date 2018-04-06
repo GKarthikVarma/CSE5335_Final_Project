@@ -65,6 +65,7 @@ if (isset($_POST['submit'])) {
 					$_SESSION['u_relocation'] = $row['user_relocation'];
 					$_SESSION['u_type'] = "student";
 					$_SESSION['u_photo'] = $row['user_photo'];
+					$_SESSION['u_resume'] = $row['user_resume'];
 					header("Location: ../profile.php?login=success");
 					exit();
 				}

@@ -1,9 +1,8 @@
 <div class="profile-container">
 <center>
-  <img src="uploads/<?php echo $photo?>" id="profile-photo">
+  <img src="uploads/<?php echo $photo; ?>" id="profile-photo">
 
 <h1><?php echo $first_name." ".$last_name; ?></h1>
-
 <?php
 
 if ($degree != null && $degree_in  != null){
@@ -29,6 +28,6 @@ if ($relocation == 0) {
 ?>
 <br />
 Email: <?php echo $email; ?><br /><br /><br />
-<a href="#resume.pdf">Download Resume</a>
+<a href="uploads/<?php echo $resume; ?>">Download Resume </a>
 </center>
 </div>
