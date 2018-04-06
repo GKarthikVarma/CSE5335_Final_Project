@@ -26,17 +26,26 @@ if (isset($_POST['search'])){
 	$title = $_POST['job_title'];
 	$location = $_POST['location'];
 
-	if (empty($title) || empty($location)){
+	if (empty($location)){
 		header("Location: search.php?search=emptyfieldsffdsa");
-		exit();			
 	} else{
 			$loc = explode(",", $location);
-			$sql = "SELECT * FROM jobs WHERE job_title='$title' AND city='$loc[0]' AND state='$loc[1]'";
+			$title=trim($title);
+			$titleArray=explode(" ",$title);
+			$title=join("%",$titleArray);
+			$loc[0]=trim($loc[0]);
+			$loc[1]=trim($loc[1]);
+			if(trim($title)=="") {
+				$sql = "SELECT * FROM jobs WHERE city='$loc[0]' AND state='$loc[1]'";
+			} else {
+				$sql = "SELECT * FROM jobs WHERE job_title LIKE '%$title%' AND city='$loc[0]' AND state='$loc[1]'";
+			}
+
 			$result = mysqli_query($connection, $sql);
 			$resultcheck = mysqli_num_rows($result);
 			if ($resultcheck < 1){
 				header("Location: search.php?search=no_result_found");
-				exit();		
+				exit();
 			} else {
 				echo "<div class='main-container'>";
     			echo "<div id='job-listings'>";
@@ -44,21 +53,21 @@ if (isset($_POST['search'])){
         		echo "<tr>";
           		echo "<th>Job Title</th>";
           		echo "<th>Company Name</th>";
-          		echo "<th>City</th>";
-				echo "<th>State</th>";
-				echo "<th>Job Skills</th>";
-          		echo "<th>Job Salary</th>";
+          		echo "<th>Location</th>";
           		echo "<th></th>";
           		while($row = mysqli_fetch_assoc($result)) {
+								$sql="SELECT * FROM job_student WHERE job_id=".$row['job_id']." AND user_id=".$_SESSION['u_id'].";";
+								$applied = (mysqli_num_rows(mysqli_query($connection, $sql)) > 0);
           			echo "<tr>\n";
-          			echo "<td>".$row['job_title']."</td>\n";
-					echo "<td>".$row['company_name']."</td>\n";
-					echo "<td>".$row['city']."</td>\n";
-					echo "<td>".$row['state']."</td>\n";
-					echo "<td>".$row['job_skills']."</td>\n";
-					echo "<td>".$row['job_salary']."</td>\n";
-
-				}
+								if($applied) {
+									echo "<td>".$row['job_title']." <span style='color: green;'>&#10004;</span></td>\n";
+								} else {
+									echo "<td>".$row['job_title']."</td>\n";
+								}
+								echo "<td>".$row['company_name']."</td>\n";
+								echo "<td>".$row['city'].", ".$row['state']."</td>\n";
+								echo "<td><a href='view_job.php?id=".$row['job_id']."'>View Job</a></td>";
+							}
 
 			}
 	}
