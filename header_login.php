@@ -22,6 +22,7 @@ session_start();
 			echo'<div class="navbar">
 			<ul>
 				<li><a href="profile.php">Profile</a></li>
+				<li><a href="applications.php">Applications</a></li>
 				<li><a href="search.php">Search</a></li>
 				<li><a href="index.php">Signout</a></li>
 			</ul>

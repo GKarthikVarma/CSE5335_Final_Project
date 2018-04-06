@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+error_reporting(E_ERROR | E_PARSE);
+
 
 if (isset($_POST['submit'])) {
 	include 'dbh.php';
