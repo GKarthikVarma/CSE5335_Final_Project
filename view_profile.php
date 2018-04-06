@@ -16,6 +16,8 @@
   $skills=$row['user_skills'];
   $relocation = $row['user_relocation'];
   $email = $row['user_email'];
+  $photo = $row['user_photo'];
+  $resume = $row['user_resume'];
 ?>
 
 	<div class="main-container">
