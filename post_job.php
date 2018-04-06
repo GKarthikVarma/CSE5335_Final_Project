@@ -8,7 +8,7 @@
       <h1>Create a Job Listing</h1>
     </center>
     <br /><br />
-      <form class='formA' action='create_job.php' method='post'>
+      <form class='formA' action="background/create_job.php" method='POST'>
         <label>Job Title</label><br />
         <input type='text' name='title'></input><br /><br />
         <label>Company Name</label><br />
