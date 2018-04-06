@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 	//Error handlers
 	if (empty($uid) || empty($pwd)) {
 		header("Location: ../index.php?login=emptyfields");
-		exit();	
+		exit();
 	} else{
 		$sql = "SELECT * FROM students WHERE user_uid='$uid' OR user_email='$uid'";
 		$result = mysqli_query($connection, $sql);
@@ -22,13 +22,13 @@ if (isset($_POST['submit'])) {
 			$resultcheck = mysqli_num_rows($result);
 			if ($resultcheck < 1) {
 				header("Location: ../index.php?login=no_user_found");
-				exit();	
+				exit();
 			} else {
 				if ($row = mysqli_fetch_assoc($result)) {
 					$hashedpwdcheck = password_verify($pwd, $row['rec_pass']);
 					if ($hashedpwdcheck == false){
 						header("Location: ../index.php?login=wrong_password");
-						exit();	
+						exit();
 					} elseif ($hashedpwdcheck == true) {
 						$_SESSION['uid'] = $row['rec_id'];
 						$_SESSION['u_first'] = $row['rec_first'];
@@ -36,20 +36,20 @@ if (isset($_POST['submit'])) {
 						$_SESSION['u_email'] = $row['rec_email'];
 						$_SESSION['u_uid'] = $row['rec_uname'];
 						$_SESSION['u_type'] = "recruiter";
-						header("Location: ../view_posted_jobs.php?login=successrec");
-						exit();	
+						header("Location: ../recruiter_profile.php?login=successrec");
+						exit();
 					}
 				}
 
-			} 
+			}
 		}else {
 			if ($row = mysqli_fetch_assoc($result)) {
 				$hashedpwdcheck = password_verify($pwd, $row['user_pwd']);
 				if ($hashedpwdcheck == false){
 					header("Location: ../index.php?login=wrong_password");
-					exit();	
+					exit();
 				} elseif ($hashedpwdcheck == true) {
-					// Login 
+					// Login
 					$_SESSION['u_id'] = $row['user_id'];
 					$_SESSION['u_first'] = $row['user_first'];
 					$_SESSION['u_last'] = $row['user_last'];
@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
 					$_SESSION['u_relocation'] = $row['user_relocation'];
 					$_SESSION['u_type'] = "student";
 					header("Location: ../profile.php?login=success");
-					exit();	
+					exit();
 				}
 			}
 		}
@@ -72,4 +72,3 @@ if (isset($_POST['submit'])) {
 		header("Location: ../index.php?login=error");
 		exit();
 }
-
