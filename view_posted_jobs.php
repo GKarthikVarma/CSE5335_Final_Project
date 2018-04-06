@@ -6,13 +6,6 @@
 
 
   <div class="main-container">
-    <div id='sidebar'>
-      <center>
-         <?php echo("{$_SESSION['u_first']}")?> <?php echo("{$_SESSION['u_last']}")?><br /><br />
-        <?php echo("{$_SESSION['u_email']}")?><br /><br />
-        <a href="edit_recruiter_profile.php">Edit</a></center>
-    </div>
-
 
     <div id='job-listings'>
       <table id='jobs'>
@@ -20,6 +13,7 @@
           <th>Job Title</th>
           <th>Company</th>
           <th>Location</th>
+					<th>Applicants</th>
           <th></th>
         </tr>
 				<?php
@@ -31,32 +25,19 @@
 							echo "<td>".$row['job_title']."</td>\n";
 							echo "<td>".$row['company_name']."</td>\n";
 							echo "<td>".$row['city'].", ".$row['state']."</td>\n";
+							$sql = "SELECT * FROM job_student where job_id=".$row['job_id'].";";
+							$applicantCount = mysqli_num_rows(mysqli_query($connection, $sql));
+							if($applicantCount > 0) {
+								echo "<td><a href='applicants.php?id=".$row[job_id]."'>(".$applicantCount.")</a></td>\n";
+							} else {
+								echo "<td>(0)</td>\n";
+							}
 							echo "<td><a href='edit_job.php?id=".$row[job_id]."'>Edit</a></td>\n";
 							echo "</tr>";
 						}
 					}
 
 				?>
-				<!--
-        <tr>
-          <td>Entry Level Front End Developer</td>
-          <td>PayPal</td>
-          <td>Austin, TX</td>
-          <td><a href="edit_job.php">Edit</a></td>
-        </tr>
-        <tr>
-          <td>Social Media Marketer</td>
-          <td>PayPal</td>
-          <td>Austin, TX</td>
-          <td><a href="edit_job.php">Edit</a></td>
-        </tr>
-        <tr>
-          <td>Human Resources Internship</td>
-          <td>American Airlines</td>
-          <td>Dallas, TX</td>
-          <td><a href="edit_job.php">Edit</a></td>
-        </tr>
-				-->
       </table>
 
     </div>

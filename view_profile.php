@@ -1,38 +1,30 @@
-<div class="profile-container">
-<center>
-  <img src="images/blank-profile-image.png" id="profile-photo">
-
-<h1><?php echo("{$_SESSION['u_first']}")?> <?php echo("{$_SESSION['u_last']}")?></h1>
+<!DOCTYPE html>
 
 <?php
+	include_once 'header_login.php';
+  include_once 'background/dbh.php';
+  $sql = "SELECT * FROM students WHERE user_id=".$_GET['id'].";";
+  $result = mysqli_query($connection, $sql);
+  $row = mysqli_fetch_assoc($result);
 
-if($_SESSION['u_type'] == "student"){
-if ($_SESSION['u_degree'] == null || $_SESSION['u_degree_in']  == null){
-
-}else{
-echo '<h2>' .$_SESSION["u_degree"] . ' in ' .$_SESSION["u_degree_in"] . '</h2>';
-}
-if ($_SESSION['u_graduation_semester'] == null || $_SESSION['u_graduation_year']  == null){
-
-}else{
-echo 'Graduation: '.$_SESSION["u_graduation_semester"]. ' of ' .$_SESSION["u_graduation_year"] .'<br /><br />';
-}
-
-if ( $_SESSION['u_skills']  == null){
-
-}else{
-echo ''.$_SESSION["u_skills"].'<br /><br /> Open to Relocation: ';
-if ($_SESSION['u_relocation'] == 0) {
-  echo 'NO <br /><br />';
-} else {
-  echo 'YES <br /><br />';
-}
-}
-}
-
+  $first_name=$row['user_first'];
+  $last_name=$row['user_last'];
+  $degree=$row['user_degree'];
+  $degree_in=$row['user_degree_in'];
+  $grad_sem=$row['user_graduation_semester'];
+  $grad_year=$row['user_graduation_year'];
+  $skills=$row['user_skills'];
+  $relocation = $row['user_relocation'];
+  $email = $row['user_email'];
 ?>
-<br />
-Email: <?php echo("{$_SESSION['u_email']}")?><br /><br /><br />
-<a href="#resume.pdf">Download Resume</a>
-</center>
-</div>
+
+	<div class="main-container">
+		<?php
+			include_once 'profile_container.php'
+			?>
+  </div>
+
+
+<?php
+	include_once 'footer.php';
+?>

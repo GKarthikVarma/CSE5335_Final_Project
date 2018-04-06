@@ -153,13 +153,6 @@ table#jobs tr:nth-child(2n+1) {
 
 
 /* NAV BAR STYLES */
-
-header div.nav-bottom {
-  width: 100%;
-  height: 5px;
-  background-color: #000;
-}
-
 @media only screen and (max-width: 480px) {
   header nav{
       width: 100%;
@@ -232,7 +225,7 @@ header .nav-login {
       float: left;
       font-family: arial;
       font-size: 16px;
-      color: #FFF;
+      color: #F38130;
       line-height: 63px;
       cursor: pointer;
   }
@@ -277,7 +270,7 @@ header .nav-login {
       font-family: arial;
       font-size: 16px;
       color: #111;
-      line-height: 60px;
+      line-height: 63px;
   }
 
   header .nav-login {
@@ -329,7 +322,7 @@ header .nav-login {
       float: left;
       font-family: arial;
       font-size: 16px;
-      color: #FFF;
+      color: #F38130;
       line-height: 63px;
       cursor: pointer;
   }
@@ -340,16 +333,11 @@ header .nav-login {
   }
 
   header .navbar li {
-    padding: 0 15px;
-  }
-
-  header .navbar li:hover {
-    padding: 0 15px;
-    background-color: #F38130;
+    margin: 0 15px;
   }
 
   header .navbar a{
-    color: #FFF;
+    color: #F38130;
     font-weight: bold;
   }
 
@@ -560,8 +548,13 @@ body a {
   width: 90%;
   border: 4px solid #ccc;
   background-color: #fff;
+<<<<<<< HEAD
   margin: 0 5%;
   padding: 10px;
+=======
+  margin: 70px;
+  padding: 20px; 
+>>>>>>> 8090ee524cf5517002d4ddaff722693c887b2114
 }
 
 #search-listings {

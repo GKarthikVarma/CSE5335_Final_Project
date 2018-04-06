@@ -21,7 +21,18 @@
 		<?php
 			include_once 'profile_container.php'
 			?>
+<<<<<<< HEAD
 		</div>
+=======
+
+</div>
+</body>
+</html>
+
+
+</center>
+</div>
+>>>>>>> 8090ee524cf5517002d4ddaff722693c887b2114
 
 
 <?php
