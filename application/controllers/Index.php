@@ -24,6 +24,32 @@ class Index extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('index');
+    $this->load->helper('form');
+    $this->load->library('form_validation');
+
+    $this->form_validation->set_rules('uid', 'UserID', 'required');
+    $this->form_validation->set_rules('password', 'Password', 'required');
+
+    if($this->form_validation->run()==FALSE) {
+      $this->load->view('header');
+      $this->load->view('index');
+      $this->load->view('footer');
+    } else {
+      $uid=$this->input->post('uid');
+      $password=$this->input->post('password');
+      $loginSuccess=$this->index_model->login($uid, $password);
+      if($loginSuccess) {
+        $this->load->view('header_login');
+        $this->load->view('profile');
+        $this->load->view('footer');
+      } else {
+        $this->load->view('header');
+        $this->load->view('index');
+        $this->load->view('footer');
+      }
+
+    }
+
+
 	}
 }

@@ -16,12 +16,13 @@ session_start();
 			MavConnect
 		</div>
 			<div class='nav-login'>
-
-				<form action="background/login.php" method="POST">
-					<input type="text" name="uid" placeholder="Username/email">
-					<input type="password" name="pwd" placeholder="Password">
-					<button type="submit" name="submit">Login</button>
-					</form>
+				<?php
+					echo form_open("index", "class='login-form'");
+					echo form_input("uid", "", "placeholder= 'username/email' class= 'login-input'");
+					echo form_password("password", "", "placeholder= 'password' class= 'login-input'");
+					echo form_submit("submit", "Login", "class= 'login-button'");
+					echo form_close();
+				?>
 					<a href="signup.php">Signup</a>
 			</div>
 		</div>

@@ -1,7 +1,3 @@
-<?php
-	include_once 'header.php';
-?>
-
 <body>
 <div class='login-container'>
 		<center>
@@ -10,7 +6,3 @@
 
 	</center>
 </div>
-
-<?php
-	include_once 'footer.php';
-?>
