@@ -1,0 +1,42 @@
+CREATE TABLE students (
+	user_id int(10) not null AUTO_INCREMENT PRIMARY KEY,
+    user_first varchar(256) not null,
+    user_last varchar(256) not null,
+    user_email varchar(256) not null,
+    user_uid varchar(256) not null,
+    user_pwd varchar(256) not null,
+    user_degree varchar(256),
+    user_degree_in varchar(256),
+    user_graduation_semester varchar(256),
+    user_graduation_year varchar(256),
+    user_skills varchar(1024),
+    user_relocation boolean
+);
+
+
+CREATE TABLE recruiter (
+	rec_id int(10) not null AUTO_INCREMENT PRIMARY KEY,
+    rec_first varchar(256) not null,
+    rec_last varchar(256) not null,
+    rec_email varchar(256) not null,
+    rec_uname varchar(256) not null,
+    rec_pass varchar(256) not null
+);
+
+
+CREATE TABLE job_student (
+	user_id int(10),
+    job_id int(10)
+);
+
+CREATE TABLE `jobs` (
+  `job_id` int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `rec_id` int(10) DEFAULT NULL,
+  `job_title` varchar(64) DEFAULT NULL,
+  `company_name` varchar(64) DEFAULT NULL,
+  `city` varchar(64) DEFAULT NULL,
+  `state` varchar(32) DEFAULT NULL,
+  `job_skills` varchar(256) DEFAULT NULL,
+  `job_salary` int(10) DEFAULT NULL,
+  `job_description` varchar(1024) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
