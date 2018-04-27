@@ -1,8 +1,3 @@
-<?php
-error_reporting(E_ERROR | E_PARSE);
-session_start();
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,24 +12,25 @@ session_start();
 		MavConnect
 	</div>
 	<?php
-		if ($_SESSION['u_type'] == "student")
+		if ($u_type == "student")
 		{
 			echo'<div class="navbar">
 			<ul>
-				<li><a href="profile.php">Profile</a></li>
-				<li><a href="applications.php">Applications</a></li>
-				<li><a href="search.php">Search</a></li>
-				<li><a href="index.php">Signout</a></li>
+				<li><a href="profile">Profile</a></li>
+				<li><a href="applications">Applications</a></li>
+				<li><a href="search">Search</a></li>
+				<li><a href="index">Signout</a></li>
 			</ul>
 		</div>';
-		} elseif ($_SESSION['u_type'] == "recruiter"){
+	} elseif ($u_type == "recruiter"){
 			echo'<div class="navbar">
 			<ul>
-        <li><a href="recruiter_profile.php">Profile</a></li>
-				<li><a href="view_posted_jobs.php">View Posted Jobs</a></li>
-				<li><a href="post_job.php">Post a Job</a></li>
-				<li><a href="search.php">Search</a></li>
-				<li><a href="index.php">Signout</a></li>
+        <li><a href="recruiter_profile">Profile</a></li>
+				<li><a href="view_posted_jobs">View Posted Jobs</a></li>
+				<li><a href="post_job">Post a Job</a></li>
+				<li><a href="find_students">Find Students</a></li>
+				<li><a href="search">Search</a></li>
+				<li><a href="index">Signout</a></li>
 			</ul>
 			</div>';
 		}

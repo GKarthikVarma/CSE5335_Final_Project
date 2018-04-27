@@ -340,7 +340,7 @@ header .title {
   font-size: 14px;
 }
 
-.formA button {
+.formA .submit-button {
     display: block;
     width: 150px;
     height: 40px;
@@ -354,7 +354,7 @@ header .title {
     cursor: pointer;
 }
 
-.formA button:hover {
+.formA .submit-button:hover {
     background-color: #df7813;
 }
 
@@ -373,7 +373,7 @@ header .title {
   width: 10%;
 }
 
-.search-form button {
+.search-form .search-button {
     width: 100px;
     height: 40px;
     border: none;
@@ -386,7 +386,7 @@ header .title {
     cursor: pointer;
 }
 
-.search-form button:hover {
+.search-form .search-button:hover {
     background-color: #df7813;
 }
 
@@ -418,6 +418,11 @@ header .title {
   float: left;
   line-height: 50px;
   padding: 0px 0px 0px 30px;
+}
+
+.error-msg {
+  color: #ff0000;
+  font-size: 12px;
 }
 
 body a {

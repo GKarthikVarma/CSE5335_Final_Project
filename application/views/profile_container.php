@@ -21,7 +21,7 @@ if($grad_sem != null && $grad_year != null) {
   echo 'Graduation: '.$grad_sem. ' of '.$grad_year.'<br /><br />';
 }
 
-if ( $_SESSION['u_skills']  != null){
+if ( $skills  != null){
   echo 'Skills: '.$skills;
 }
 
