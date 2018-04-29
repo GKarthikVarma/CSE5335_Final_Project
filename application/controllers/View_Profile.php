@@ -16,7 +16,7 @@ class View_Profile extends CI_Controller {
     $this->load->helper('url');
     $this->load->library('session');
 
-    $row=$this->view_profile_model->get_user($user_id);
+    $row=$this->View_profile_model->get_user($user_id);
     $header_data['u_type'] = $this->session->userdata('u_type');
 
     $data['first_name']=$row['user_first'];

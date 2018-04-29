@@ -24,11 +24,11 @@ class Search extends CI_Controller {
     } else {
       $title = $this->input->post("job_title");
       $location = $this->input->post("location");
-      $data['jobsArray'] = $this->search_model->get_jobs_array($title, $location);
+      $data['jobsArray'] = $this->Search_model->get_jobs_array($title, $location);
       $data['u_id'] = $this->session->userdata('user_id');
       $data['u_type'] = $this->session->userdata('u_type');
       if($data['u_type'] == "student") {
-        $data['jobIdsApplied'] = $this->search_model->get_jobs_applied($data['u_id']);
+        $data['jobIdsApplied'] = $this->Search_model->get_jobs_applied($data['u_id']);
       } else {
         $data['jobIdsApplied'] = array();
       }

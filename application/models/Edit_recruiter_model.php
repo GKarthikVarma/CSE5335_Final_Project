@@ -1,5 +1,5 @@
 <?php
-  class edit_recruiter_model extends CI_Model {
+  class Edit_recruiter_model extends CI_Model {
     public function __construct() {
       $this->load->database();
     }

@@ -1,5 +1,5 @@
 <?php
-  class view_profile_model extends CI_Model {
+  class View_profile_model extends CI_Model {
     public function __construct() {
       $this->load->database();
     }

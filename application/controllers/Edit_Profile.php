@@ -57,7 +57,7 @@ class Edit_Profile extends CI_Controller {
                     'user_skills' => $this->input->post("skills"),
                     'user_relocation' => $reloc
       );
-      $this->edit_profile_model->insert_profile($uid, $profileArray);
+      $this->Edit_profile_model->insert_profile($uid, $profileArray);
       $this->session->set_userdata($profileArray);
       redirect("/profile");
     }

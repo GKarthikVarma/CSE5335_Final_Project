@@ -17,8 +17,8 @@ class Applications extends CI_Controller {
       $this->output->set_status_header("404");
     } else {
       $uid=$this->session->userdata("user_id");
-      $jobIds = $this->applications_model->get_job_ids($uid);
-      $data['jobsArray'] = $this->applications_model->get_jobs_array($jobIds);
+      $jobIds = $this->Applications_model->get_job_ids($uid);
+      $data['jobsArray'] = $this->Applications_model->get_jobs_array($jobIds);
 
       $this->load->view('header_login', $header_data);
       $this->load->view('applications', $data);

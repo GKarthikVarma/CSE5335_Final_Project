@@ -23,7 +23,7 @@ class Index extends CI_Controller {
     } else {
       $uid=$this->input->post('uid');
       $password=$this->input->post('password');
-      $row=$this->index_model->login($uid, $password);
+      $row=$this->Index_model->login($uid, $password);
       if(sizeof($row) > 0) {
         $this->session->set_userdata($row);
         if($row['u_type']=="student") {

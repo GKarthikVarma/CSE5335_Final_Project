@@ -18,9 +18,9 @@ class Applicants extends CI_Controller {
     $this->load->library('session');
     $this->load->library('form_validation');
 
-    $verified = $this->applicants_model->verify_job($this->session->userdata('rec_id'), $job_id);
+    $verified = $this->Applicants_model->verify_job($this->session->userdata('rec_id'), $job_id);
     if($verified) {
-      $data['applicants']=$this->applicants_model->get_applicants($job_id);
+      $data['applicants']=$this->Applicants_model->get_applicants($job_id);
       $header_data['u_type'] = $this->session->userdata('u_type');
 
       $this->load->view('header_login', $header_data);

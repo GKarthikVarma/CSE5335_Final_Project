@@ -17,8 +17,8 @@ class Delete_Job extends CI_Controller {
     $this->load->library('session');
 
     $uid = $this->session->userdata('rec_id');
-    if($this->delete_job_model->verify_job($uid, $job_id)) {
-      $this->delete_job_model->delete_job($job_id);
+    if($this->Delete_job_model->verify_job($uid, $job_id)) {
+      $this->Delete_job_model->delete_job($job_id);
       redirect("/view_posted_jobs");
     } else {
       $this->output->set_status_heater("404");

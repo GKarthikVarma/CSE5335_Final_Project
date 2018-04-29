@@ -37,7 +37,7 @@ class Post_Job extends CI_Controller {
       $jobArray['state'] = $this->input->post('state');
       $jobArray['job_skills'] = $this->input->post('skills');
       $jobArray['job_salary'] = $this->input->post('salary');
-      $this->post_job_model->insert_job($jobArray);
+      $this->Post_job_model->insert_job($jobArray);
       redirect("/view_posted_jobs");
     }
 	}

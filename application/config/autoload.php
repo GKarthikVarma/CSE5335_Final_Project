@@ -132,6 +132,6 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('index_model', 'edit_profile_model', 'applications_model', 'search_model', 'view_posted_jobs_model',
-                            'post_job_model', 'edit_job_model', 'delete_job_model', 'view_job_model', 'applicants_model',
-                            'view_profile_model', 'edit_recruiter_model');
+$autoload['model'] = array('Index_model', 'Edit_profile_model', 'Applications_model', 'Search_model', 'View_posted_jobs_model',
+                            'Post_job_model', 'Edit_job_model', 'Delete_job_model', 'View_job_model', 'Applicants_model',
+                            'View_profile_model', 'Edit_recruiter_model', 'Find_students_model');

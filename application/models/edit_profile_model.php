@@ -1,5 +1,5 @@
 <?php
-  class edit_profile_model extends CI_Model {
+  class Edit_profile_model extends CI_Model {
     public function __construct() {
       $this->load->database();
     }

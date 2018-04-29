@@ -1,5 +1,5 @@
 <?php
-  class view_posted_jobs_model extends CI_Model {
+  class View_posted_jobs_model extends CI_Model {
     public function __construct() {
       $this->load->database();
     }

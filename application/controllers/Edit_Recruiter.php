@@ -36,7 +36,7 @@ class Edit_Recruiter extends CI_Controller {
                     'rec_last' => $this->input->post("last_name"),
                     'rec_email' => $this->input->post("email"),
       );
-      $this->edit_recruiter_model->update_recruiter($uid, $profileArray);
+      $this->Edit_recruiter_model->update_recruiter($uid, $profileArray);
       $this->session->set_userdata($profileArray);
       redirect("/recruiter_profile");
     }

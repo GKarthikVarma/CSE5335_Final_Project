@@ -25,7 +25,7 @@ class Edit_Job extends CI_Controller {
     $this->form_validation->set_rules("skills", "Job Skills", "required");
 
 
-    $job = $this->edit_job_model->get_job($this->session->userdata('rec_id'), $job_id);
+    $job = $this->Edit_job_model->get_job($this->session->userdata('rec_id'), $job_id);
     if(sizeof($job) == 0) {
       $this->output->set_status_header("404");
       exit;
@@ -47,7 +47,7 @@ class Edit_Job extends CI_Controller {
                         "job_skills"=>$this->input->post('skills'),
                         "job_salary"=>$this->input->post('salary')
       );
-      $this->edit_job_model->update_job($job_id, $jobArray);
+      $this->Edit_job_model->update_job($job_id, $jobArray);
       redirect("/view_posted_jobs");
     }
 

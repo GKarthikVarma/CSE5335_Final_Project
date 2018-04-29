@@ -1,5 +1,5 @@
 <?php
-  class delete_job_model extends CI_Model {
+  class Delete_job_model extends CI_Model {
     public function __construct() {
       $this->load->database();
     }

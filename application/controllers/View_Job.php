@@ -21,7 +21,7 @@ class View_Job extends CI_Controller {
     $this->form_validation->set_rules("job_id", "Job Id", "required");
 
     if($this->form_validation->run() == false) {
-      $job = $this->view_job_model->get_job($job_id);
+      $job = $this->View_job_model->get_job($job_id);
       if(sizeof($job) == 0) {
         $this->output->set_status_header("404");
         exit;
@@ -33,7 +33,7 @@ class View_Job extends CI_Controller {
       $data['job_id']=$job_id;
       if($data['u_type']=="student") {
         $uid=$this->session->userdata('user_id');
-        $data['hasApplied']=$this->view_job_model->get_has_applied($uid, $job_id);
+        $data['hasApplied']=$this->View_job_model->get_has_applied($uid, $job_id);
       }
 
       $header_data['u_type'] = $this->session->userdata('u_type');
@@ -44,7 +44,7 @@ class View_Job extends CI_Controller {
     } else {
       $uid=$this->session->userdata('user_id');
       $job_student_array = array("user_id" => $uid, "job_id" => $job_id);
-      $this->view_job_model->apply($job_student_array);
+      $this->View_job_model->apply($job_student_array);
 
       redirect("/applications");
     }
