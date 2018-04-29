@@ -59,7 +59,7 @@
 				'WI'=>'Wisconsin',
 				'WY'=>'Wyoming',
 			);
-			echo form_open("edit_job/"$job_id, "class='formA'");
+			echo form_open("edit_job/".$job_id, "class='formA'");
 			echo form_label("Job Title")."<br />";
 			echo form_input("title", $job_title)."<span class='error-msg'>".form_error("title")."</span>"."<br /><br />";
 			echo form_label("Company Name: ")."<br />";
@@ -69,12 +69,16 @@
 			echo form_label("City")."<br />";
 			echo form_input("city", $city)."<span class='error-msg'>".form_error("city")."</span>"."<br /><br />";
 			echo form_label("State")."<br />";
-			echo form_dropdown("state", $states, $states[$state])."<br /><br />";
+			echo form_dropdown("state", $states, $state)."<br /><br />";
 			echo form_label("Skills (separate by comma)")."<br />";
 			echo form_textarea("skills", $job_skills)."<span class='error-msg'>".form_error("skills")."</span>"."<br /><br />";
 			echo form_label("Est. Salary (optional)")."<br />";
-			echo form_input("salary", $job_salary)."<br /><br /><br />";
-			echo "<center><a href='delete_job.php?id=".$job_id."'>Remove Listing</a></center><br />";
+      if(isset($job_salary)) {
+        echo form_input("salary", $job_salary)."<br /><br /><br />";
+      } else {
+        echo form_input("salary")."<br /><br /><br />";
+      }
+			echo "<center><a href='".base_url()."delete_job/".$job_id."'>Remove Listing</a></center><br />";
 			echo form_submit("submit", "Save", "class='submit-button'");
 			echo form_close();
 		 ?>

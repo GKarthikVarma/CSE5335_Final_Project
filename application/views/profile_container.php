@@ -4,9 +4,9 @@
 <?php
 
   if($photo != null) {
-    echo   "<img src='uploads/".$photo."' id='profile-photo'>";
+    echo   "<img src='".base_url()."uploads/".$photo."' id='profile-photo'>";
   } else {
-    echo  "<img src='images/blank-profile-image.png' id='profile-photo'>";
+    echo  "<img src='".base_url()."images/blank-profile-image.png' id='profile-photo'>";
   }
  ?>
 
@@ -39,7 +39,7 @@ Email: <?php echo $email; ?><br />
 <?php
 
 if($resume != null) {
-  echo "<br /><br /><a href='uploads".$resume."'>Download Resume </a>";
+  echo "<br /><br /><a href='".base_url()."uploads".$resume."'>Download Resume </a>";
 }
 
  ?>

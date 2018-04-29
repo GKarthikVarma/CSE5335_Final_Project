@@ -27,7 +27,11 @@ class Search extends CI_Controller {
       $data['jobsArray'] = $this->search_model->get_jobs_array($title, $location);
       $data['u_id'] = $this->session->userdata('user_id');
       $data['u_type'] = $this->session->userdata('u_type');
-      $data['jobIdsApplied'] = $this->search_model->get_jobs_applied($data['u_id']);
+      if($data['u_type'] == "student") {
+        $data['jobIdsApplied'] = $this->search_model->get_jobs_applied($data['u_id']);
+      } else {
+        $data['jobIdsApplied'] = array();
+      }
       $this->load->view('header_login', $header_data);
       $this->load->view('search', $data);
       $this->load->view('footer');

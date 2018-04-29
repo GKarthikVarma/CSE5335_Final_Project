@@ -16,7 +16,7 @@
 						echo "<td>".$row['company_name']."</td>\n";
 						echo "<td>".$row['city'].", ".$row['state']."</td>\n";
 						if($row['applicantCount'] > 0) {
-							echo "<td><a href='applicants.php?id=".$row['job_id']."'>(".$row['applicantCount'].")</a></td>\n";
+							echo "<td><a href='".base_url()."applicants/".$row['job_id']."'>(".$row['applicantCount'].")</a></td>\n";
 						} else {
 							echo "<td>(0)</td>\n";
 						}

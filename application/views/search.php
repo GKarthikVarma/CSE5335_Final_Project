@@ -33,7 +33,7 @@
 						}
 						echo "<td>".$row['company_name']."</td>\n";
 						echo "<td>".$row['city'].", ".$row['state']."</td>\n";
-						echo "<td><a href='view_job.php?id=".$row['job_id']."'>View Job</a></td>";
+						echo "<td><a href='".base_url()."view_job/".$row['job_id']."'>View Job</a></td>";
 					}
 
 	}

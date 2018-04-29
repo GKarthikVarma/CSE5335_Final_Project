@@ -4,26 +4,23 @@
 ?>
 
 
-  <div class="main-container">
+<div class="main-container">
 
   <div class="profile-container">
 
-  <form class="formA" action="background/edit_rec_backend.php" method="post">
-    <input type="hidden" name="id" value=<?php echo("{$_SESSION['u_id']}")?>>
-    <input type="hidden" name="uid" value=<?php echo("{$_SESSION['u_uid']}")?>>
-    <label>First Name:</label><br />
-    <input type="text" name="first_name"></input><br /><br />
-    <label>Last Name:</label><br />
-    <input type="text" name="last_name"></input><br /><br />
-    <label>E-Mail:</label><br />
-    <input type="text" name="email"></input><br /><br />
-    <center>
-    <button type="submit" name="save_profile">Save Profile</button>
-  </center>
-
-  </form>
+		<?php
+			echo form_open("edit_recruiter", "class='formA'");
+			echo form_label("First Name: ")."<br />";
+			echo form_input("first_name", $first_name)."<span class='error-msg'>".form_error("first_name")."</span>"."<br /><br />";
+			echo form_label("Last Name: ")."<br />";
+			echo form_input("last_name", $last_name)."<span class='error-msg'>".form_error("last_name")."</span>"."<br /><br />";
+			echo form_label("Email: ")."<br />";
+			echo form_input("email", $email)."<span class='error-msg'>".form_error("email")."</span>"."<br /><br />";
+			echo form_submit("save_profile", "Save Profile", "class='submit-button'");
+			echo form_close();
+		 ?>
   </div>
-  </div>
+</div>
 
   <?php
   	include_once 'footer.php';
