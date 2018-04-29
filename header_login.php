@@ -33,7 +33,7 @@ session_start();
         <li><a href="recruiter_profile.php">Profile</a></li>
 				<li><a href="view_posted_jobs.php">View Posted Jobs</a></li>
 				<li><a href="post_job.php">Post a Job</a></li>
-				<li><a href="search.php">Search</a></li>
+				<li><a href="search_student.php">Search</a></li>
 				<li><a href="index.php">Signout</a></li>
 			</ul>
 			</div>';

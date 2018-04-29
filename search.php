@@ -25,9 +25,8 @@ if (isset($_POST['search'])){
 
 	$title = $_POST['job_title'];
 	$location = $_POST['location'];
-
-	if (empty($location)){
-		header("Location: search.php?search=emptyfieldsffdsa");
+	if (empty($title)){
+		header("Location: search.php?search=emptyfields");
 	} else{
 			$loc = explode(",", $location);
 			$title=trim($title);
@@ -36,9 +35,17 @@ if (isset($_POST['search'])){
 			$loc[0]=trim($loc[0]);
 			$loc[1]=trim($loc[1]);
 			if(trim($title)=="") {
+				if(empty($location)){
+					$sql = "SELECT * FROM jobs WHERE job_title='$title'";
+				}else{
 				$sql = "SELECT * FROM jobs WHERE city='$loc[0]' AND state='$loc[1]'";
+			}
 			} else {
+				if(empty($location)){
+					$sql = "SELECT * FROM jobs WHERE job_title='$title'";
+				}else{
 				$sql = "SELECT * FROM jobs WHERE job_title LIKE '%$title%' AND city='$loc[0]' AND state='$loc[1]'";
+			}
 			}
 
 			$result = mysqli_query($connection, $sql);
