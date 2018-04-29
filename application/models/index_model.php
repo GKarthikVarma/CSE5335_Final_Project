@@ -17,7 +17,7 @@
               return array();
     				} elseif ($hashedpwdcheck == true) {
               $row['u_type']="recruiter";
-              return $query->row_array();
+              return $row;
             }
       	  }
     	} else {

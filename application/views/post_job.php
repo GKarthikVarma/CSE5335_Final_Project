@@ -1,86 +1,81 @@
-<?php
-	include_once 'header_login.php';
-?>
-
 <div class='main-container'>
   <div class='profile-container'>
     <center>
       <h1>Create a Job Listing</h1>
     </center>
     <br /><br />
-      <form class='formA' action="background/create_job.php" method='POST'>
-        <label>Job Title</label><br />
-        <input type='text' name='title'></input><br /><br />
-        <label>Company Name</label><br />
-        <input type='text' name='company'></input><br /><br />
-        <label>Job Description (max 1024 chars)</label><br />
-        <textarea name='description'></textarea><br /><br />
-        <label>City</label><br />
-        <input type='text' name='city'></input><br /><br />
-        <label>State</label><br />
-        <select name='state'>
-        	<option value="AL">Alabama</option>
-        	<option value="AK">Alaska</option>
-        	<option value="AZ">Arizona</option>
-        	<option value="AR">Arkansas</option>
-        	<option value="CA">California</option>
-        	<option value="CO">Colorado</option>
-        	<option value="CT">Connecticut</option>
-        	<option value="DE">Delaware</option>
-        	<option value="DC">District Of Columbia</option>
-        	<option value="FL">Florida</option>
-        	<option value="GA">Georgia</option>
-        	<option value="HI">Hawaii</option>
-        	<option value="ID">Idaho</option>
-        	<option value="IL">Illinois</option>
-        	<option value="IN">Indiana</option>
-        	<option value="IA">Iowa</option>
-        	<option value="KS">Kansas</option>
-        	<option value="KY">Kentucky</option>
-        	<option value="LA">Louisiana</option>
-        	<option value="ME">Maine</option>
-        	<option value="MD">Maryland</option>
-        	<option value="MA">Massachusetts</option>
-        	<option value="MI">Michigan</option>
-        	<option value="MN">Minnesota</option>
-        	<option value="MS">Mississippi</option>
-        	<option value="MO">Missouri</option>
-        	<option value="MT">Montana</option>
-        	<option value="NE">Nebraska</option>
-        	<option value="NV">Nevada</option>
-        	<option value="NH">New Hampshire</option>
-        	<option value="NJ">New Jersey</option>
-        	<option value="NM">New Mexico</option>
-        	<option value="NY">New York</option>
-        	<option value="NC">North Carolina</option>
-        	<option value="ND">North Dakota</option>
-        	<option value="OH">Ohio</option>
-        	<option value="OK">Oklahoma</option>
-        	<option value="OR">Oregon</option>
-        	<option value="PA">Pennsylvania</option>
-        	<option value="RI">Rhode Island</option>
-        	<option value="SC">South Carolina</option>
-        	<option value="SD">South Dakota</option>
-        	<option value="TN">Tennessee</option>
-        	<option value="TX">Texas</option>
-        	<option value="UT">Utah</option>
-        	<option value="VT">Vermont</option>
-        	<option value="VA">Virginia</option>
-        	<option value="WA">Washington</option>
-        	<option value="WV">West Virginia</option>
-        	<option value="WI">Wisconsin</option>
-        	<option value="WY">Wyoming</option>
-        </select><br /><br />
-        <label>Skills (separate by comma)</label><br />
-        <textarea name='skills'></textarea><br /><br />
-        <label>Est. Salary (optional)</label><br />
-        <input type='text' name='salary'></input><br /><br />
-        <center><button type='submit'>Submit</button></center>
-      </form>
+		<?php
+			$states = array(
+		    'AL'=>'Alabama',
+		    'AK'=>'Alaska',
+		    'AZ'=>'Arizona',
+		    'AR'=>'Arkansas',
+		    'CA'=>'California',
+		    'CO'=>'Colorado',
+		    'CT'=>'Connecticut',
+		    'DE'=>'Delaware',
+		    'DC'=>'District of Columbia',
+		    'FL'=>'Florida',
+		    'GA'=>'Georgia',
+		    'HI'=>'Hawaii',
+		    'ID'=>'Idaho',
+		    'IL'=>'Illinois',
+		    'IN'=>'Indiana',
+		    'IA'=>'Iowa',
+		    'KS'=>'Kansas',
+		    'KY'=>'Kentucky',
+		    'LA'=>'Louisiana',
+		    'ME'=>'Maine',
+		    'MD'=>'Maryland',
+		    'MA'=>'Massachusetts',
+		    'MI'=>'Michigan',
+		    'MN'=>'Minnesota',
+		    'MS'=>'Mississippi',
+		    'MO'=>'Missouri',
+		    'MT'=>'Montana',
+		    'NE'=>'Nebraska',
+		    'NV'=>'Nevada',
+		    'NH'=>'New Hampshire',
+		    'NJ'=>'New Jersey',
+		    'NM'=>'New Mexico',
+		    'NY'=>'New York',
+		    'NC'=>'North Carolina',
+		    'ND'=>'North Dakota',
+		    'OH'=>'Ohio',
+		    'OK'=>'Oklahoma',
+		    'OR'=>'Oregon',
+		    'PA'=>'Pennsylvania',
+		    'RI'=>'Rhode Island',
+		    'SC'=>'South Carolina',
+		    'SD'=>'South Dakota',
+		    'TN'=>'Tennessee',
+		    'TX'=>'Texas',
+		    'UT'=>'Utah',
+		    'VT'=>'Vermont',
+		    'VA'=>'Virginia',
+		    'WA'=>'Washington',
+		    'WV'=>'West Virginia',
+		    'WI'=>'Wisconsin',
+		    'WY'=>'Wyoming',
+			);
+			echo form_open("post_job", "class='formA'");
+			echo form_label("Job Title")."<br />";
+			echo form_input("title")."<span class='error-msg'>".form_error("title")."</span>"."<br /><br />";
+			echo form_label("Company Name: ")."<br />";
+			echo form_input("company")."<span class='error-msg'>".form_error("company")."</span>"."<br /><br />";
+			echo form_label("Job Description (max 1024 chars)")."<br />";
+			echo form_textarea("description")."<span class='error-msg'>".form_error("description")."</span>"."<br /><br />";
+			echo form_label("City")."<br />";
+			echo form_input("city")."<span class='error-msg'>".form_error("city")."</span>"."<br /><br />";
+			echo form_label("State")."<br />";
+			echo form_dropdown("state", $states)."<br /><br />";
+			echo form_label("Skills (separate by comma)")."<br />";
+			echo form_textarea("skills")."<span class='error-msg'>".form_error("skills")."</span>"."<br /><br />";
+			echo form_label("Est. Salary (optional)")."<br />";
+			echo form_input("salary")."<br /><br />";
+			echo form_submit("submit", "Submit", "class='submit-button'");
+			echo form_close();
+		 ?>
 
   </div>
 </div>
-
-<?php
-	include_once 'footer.php';
-?>
