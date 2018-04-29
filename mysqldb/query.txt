@@ -1,38 +1,35 @@
-CREATE TABLE students (
-	user_id int(10) not null AUTO_INCREMENT PRIMARY KEY,
-    user_first varchar(256) not null,
-    user_last varchar(256) not null,
-    user_email varchar(256) not null,
-    user_uid varchar(256) not null,
-    user_pwd varchar(256) not null,
-    user_degree varchar(256),
-    user_degree_in varchar(256),
-    user_graduation_semester varchar(256),
-    user_graduation_year varchar(256),
-    user_skills varchar(1024),
-    user_relocation boolean,
-    user_photo varchar(256),
-    user_resume varchar(256)
-);
+-- phpMyAdmin SQL Dump
+-- version 4.7.9
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 29, 2018 at 12:01 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-CREATE TABLE recruiter (
-	rec_id int(10) not null AUTO_INCREMENT PRIMARY KEY,
-    rec_first varchar(256) not null,
-    rec_last varchar(256) not null,
-    rec_email varchar(256) not null,
-    rec_uname varchar(256) not null,
-    rec_pass varchar(256) not null
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Database: `loginsystem`
+--
 
-CREATE TABLE job_student (
-	user_id int(10),
-    job_id int(10)
-);
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
 
 CREATE TABLE `jobs` (
-  `job_id` int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `job_id` int(10) NOT NULL,
   `rec_id` int(10) DEFAULT NULL,
   `job_title` varchar(64) DEFAULT NULL,
   `company_name` varchar(64) DEFAULT NULL,
@@ -42,3 +39,138 @@ CREATE TABLE `jobs` (
   `job_salary` int(10) DEFAULT NULL,
   `job_description` varchar(1024) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`job_id`, `rec_id`, `job_title`, `company_name`, `city`, `state`, `job_skills`, `job_salary`, `job_description`) VALUES
+(1, 4, 'hello', '123', 'Te', 'CA', 'fdasf', 1550, 'jgsag'),
+(2, 4, 'fdsa', 'dgas', 'dasg', 'AL', 'adf', 1234, 'dsag'),
+(3, 4, 'fdsa', 'dgas', 'Lewis Center', 'AL', 'dfsafg', 12314, 'fgdsg'),
+(4, 4, 'fdsa', 'dgas', 'Lewis Center', 'AL', 'dfas', 1234, 'fdasfg'),
+(5, 4, 'fdsa', 'dgas', 'Lewis Center', 'AL', 'dgasg', 123214, 'hgsdfh'),
+(6, 4, 'hello', '123', 'Te', 'CA', 'gdasg', 214454, 'fjkdajkl'),
+(7, 4, '', '', '', 'AL', '', NULL, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `job_student`
+--
+
+CREATE TABLE `job_student` (
+  `user_id` int(10) DEFAULT NULL,
+  `job_id` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job_student`
+--
+
+INSERT INTO `job_student` (`user_id`, `job_id`) VALUES
+(3, 1),
+(2, 5),
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `recruiter`
+--
+
+CREATE TABLE `recruiter` (
+  `rec_id` int(10) NOT NULL,
+  `rec_first` varchar(256) NOT NULL,
+  `rec_last` varchar(256) NOT NULL,
+  `rec_email` varchar(256) NOT NULL,
+  `rec_uname` varchar(256) NOT NULL,
+  `rec_pass` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `recruiter`
+--
+
+INSERT INTO `recruiter` (`rec_id`, `rec_first`, `rec_last`, `rec_email`, `rec_uname`, `rec_pass`) VALUES
+(4, 'Suma', 'Madhuri', 'suma@gmail.com', 'suma', '$2y$10$CXKKXMoibHYsPkvTiTa72eoWWSboSaPjPJ.38ds.5L..1pGSgPckS'),
+(5, 'Raghul', 'Kanagaraj', 'raghul@gmail.com', 'raghul', '$2y$10$K0F1rIRfAZq.Sq5uyzrTuOAiV7vfSpOMBpMVh1ZiocZUAZJcWltg2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `user_id` int(10) NOT NULL,
+  `user_first` varchar(256) NOT NULL,
+  `user_last` varchar(256) NOT NULL,
+  `user_email` varchar(256) NOT NULL,
+  `user_uid` varchar(256) NOT NULL,
+  `user_pwd` varchar(256) NOT NULL,
+  `user_degree` varchar(256) DEFAULT NULL,
+  `user_degree_in` varchar(256) DEFAULT NULL,
+  `user_graduation_semester` varchar(256) DEFAULT NULL,
+  `user_graduation_year` varchar(256) DEFAULT NULL,
+  `user_skills` varchar(1024) DEFAULT NULL,
+  `user_relocation` tinyint(1) DEFAULT NULL,
+  `user_photo` varchar(256) DEFAULT NULL,
+  `user_resume` varchar(256) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`user_id`, `user_first`, `user_last`, `user_email`, `user_uid`, `user_pwd`, `user_degree`, `user_degree_in`, `user_graduation_semester`, `user_graduation_year`, `user_skills`, `user_relocation`, `user_photo`, `user_resume`) VALUES
+(1, 'karthik', 'gadiraju', 'gkvarma9177@gmail.com', 'kv1458', '$2y$10$ITfs.KkFoYqP2gyJCXMduOy641W5qt8guHEyjdOcsxlFGTzKhs5Fy', 'Associates', 'CSE', 'Fall', '2144', 'dfaffa', 0, 'kv1458.jpeg', 'kv1458_resume.pdf');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`job_id`);
+
+--
+-- Indexes for table `recruiter`
+--
+ALTER TABLE `recruiter`
+  ADD PRIMARY KEY (`rec_id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `job_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `recruiter`
+--
+ALTER TABLE `recruiter`
+  MODIFY `rec_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
