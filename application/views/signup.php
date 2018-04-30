@@ -6,16 +6,35 @@
 		<center>
 			<br />
 		<h2 id="register">Sign Up for MavConnect</h2>
-		<form class='signup-form' action='background/signup.php' method='POST'>
-			<input class="text-input" type="text" name="first" placeholder="First Name">
-			<input class="text-input"  type="text" name="last" placeholder="Last Name">
-			<input class="text-input"  type="text" name="email" placeholder="E-mail">
-			<input class="text-input"  type="text" name="uid" placeholder="Username">
-			<input class="text-input"  type="password" name="pwd" placeholder="Password"><br /><br />
-			<input type="radio" name="type" value="student" checked="checked"> Student
-			<input type="radio" name="type" value="Recruiter"> Recruiter<br /><br />
-			<button type = 'submit' name = 'submit'>Signup</button>
-		</form>
+
+		<?php 
+	        echo form_open('signup/submit');
+                echo form_label('First : ');
+                echo form_error('dfirst');
+                echo form_input(array('id' => 'dfirst', 'name' => 'dfirst'));
+                echo "<br>";
+                echo form_label('Last :');
+                echo form_error('dLast');
+                echo form_input(array('id' => 'dlast', 'name' =>'dlast'));
+                echo "<br>";
+                echo form_label('Email :');
+                echo form_error('demail');
+                echo form_input(array('id' => 'demail', 'name' =>'demail'));
+                echo "<br>";
+                echo form_label('Username :');
+                echo form_error('duid');
+                echo form_input(array('id' => 'duid', 'name' =>'duid'));
+                echo "<br>";
+                echo form_label('Password :');
+                echo form_error('dpass');
+                echo form_password(array('id' => 'dpwd', 'name' =>'dpwd'));
+                echo "<br>";
+                $options = array('Student', 'Recruiter');
+                echo form_dropdown("utype", $options);
+                echo "<br>";
+                echo form_submit('submit', 'submit');
+                echo form_close();
+		?>
 	</center>
 	</div>
 
