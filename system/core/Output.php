@@ -145,6 +145,7 @@ class CI_Output {
 			&& extension_loaded('zlib')
 		);
 
+
 		isset(self::$func_overload) OR self::$func_overload = (extension_loaded('mbstring') && ini_get('mbstring.func_overload'));
 
 		// Get mime types for later
