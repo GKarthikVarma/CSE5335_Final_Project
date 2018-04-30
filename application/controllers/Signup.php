@@ -23,15 +23,15 @@ class Signup extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('user_insert');
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('first', 'first', 'required');
-		$this->form_validation->set_rules('last', 'last', 'required');
-		$this->form_validation->set_rules('email', 'email', 'required|valid_email');
-		$this->form_validation->set_rules('uname', 'uid', 'required');
-		$this->form_validation->set_rules('pwd', 'pwd', 'required');
+		$this->form_validation->set_rules('dfirst', 'dfirst', 'required');
+		$this->form_validation->set_rules('dlast', 'dlast', 'required');
+		$this->form_validation->set_rules('demail', 'demail', 'required|valid_email');
+		$this->form_validation->set_rules('duid', 'duid', 'required');
+		$this->form_validation->set_rules('dpwd', 'dpwd', 'required');
 		if($this->form_validation->run() == FALSE){
-		$this->load->view('header');
-		$this->load->view('signup');
-		$this->load->view('footer');
+			$this->load->view('header');
+			$this->load->view('signup');
+			$this->load->view('footer');
 		} else {
 		$data = array(
 			'first' => $this->input->post('dfirst'),
