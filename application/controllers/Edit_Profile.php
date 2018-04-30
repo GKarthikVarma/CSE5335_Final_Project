@@ -7,6 +7,53 @@ class Edit_Profile extends CI_Controller {
     parent::__construct();
   }
 
+
+  public function upload_file($filename)
+  {
+          $config['upload_path']          = base_url().'uploads/';
+          $config['allowed_types']        = 'doc|docx|pdf';
+          $config['max_size']             = 100;
+
+          $this->load->library('upload', $config);
+
+          if ( ! $this->upload->do_upload($filename))
+          {
+                  $error = array('error' => $this->upload->display_errors());
+
+                  return $error;
+          }
+          else
+          {
+                  $data = array('upload_data' => $this->upload->data());
+
+                  return array();
+          }
+  }
+
+  public function upload_image($filename)
+  {
+          $config['upload_path']          = base_url().'uploads/';
+          $config['allowed_types']        = 'gif|jpg|png';
+          $config['max_size']             = 100;
+          $config['max_width']            = 1024;
+          $config['max_height']           = 768;
+
+          $this->load->library('upload', $config);
+
+          if ( ! $this->upload->do_upload($filename))
+          {
+                  $error = array('error' => $this->upload->display_errors());
+
+                  return $error;
+          }
+          else
+          {
+                  $data = array('upload_data' => $this->upload->data());
+
+                  return array();
+          }
+  }
+
 	public function index()
 	{
     $this->load->helper('form');
@@ -57,8 +104,32 @@ class Edit_Profile extends CI_Controller {
                     'user_skills' => $this->input->post("skills"),
                     'user_relocation' => $reloc
       );
+
+      if(!empty($_FILES['photo']['name'])) {
+        $filename=$_FILES['photo']['name'];
+        $ext = strtolower(end(explode(".", $filename)));
+        $profileArray["user_photo"] = base_url()."uploads/".$this->session->userdata("user_uid").$ext;
+        $errors=upload_image("photo");
+        if(sizeof(errors) > 0) {
+          print_r($errors);
+          exit;
+        }
+      }
+      if(!empty($_FILES['resume']['name'])) {
+        $filename=$_FILES['resume']['name'];
+        $ext = strtolower(end(explode(".", $filename)));
+        $profileArray['user_resume'] = base_url()."uploads/".$this->session->userdata("user_uid").$ext;
+        $errors=upload_file("resume");
+        if(sizeof(errors) > 0) {
+          print_r($errors);
+          exit;
+        }
+      }
+
       $this->Edit_profile_model->insert_profile($uid, $profileArray);
       $this->session->set_userdata($profileArray);
+
+
       redirect("/profile");
     }
 
