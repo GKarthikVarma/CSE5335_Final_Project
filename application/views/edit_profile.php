@@ -43,9 +43,9 @@
       echo form_label("Open to Relocation: ");
       echo form_checkbox("relocation", "on", ($relocation==1))."<br /><br />";
       echo form_label("Upload Photo")."<br />";
-      echo form_upload("photo", "", "accept='.png, .jpg, .jpeg'")."<br /><br />";
+      echo form_upload("photo", "", "accept='.png, .jpg, .jpeg'")."<span class='error-msg'>".$photo_error."</span>"."<br /><br />";
       echo form_label("Upload Resume")."<br />";
-      echo form_upload("resume", "", "accept='.doc, .docx, .pdf'")."<br /><br />";
+      echo form_upload("resume", "", "accept='.doc, .docx, .pdf'")."<span class='error-msg'>".$resume_error."</span>"."<br /><br />";
       echo form_submit("save_profile", "Save Profile", "class='submit-button'");
       echo form_close();
 

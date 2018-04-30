@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/css/style.css">
 </head>
 
 <header>
@@ -19,7 +19,7 @@
 					echo form_submit("submit", "Login", "class= 'login-button'");
 					echo form_close();
 				?>
-					<a href="signup.php">Signup</a>
+					<a href="signup">Signup</a>
 			</div>
 		</div>
 	</nav>

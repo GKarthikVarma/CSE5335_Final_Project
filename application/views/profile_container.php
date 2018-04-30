@@ -39,7 +39,7 @@ Email: <?php echo $email; ?><br />
 <?php
 
 if($resume != null) {
-  echo "<br /><br /><a href='".base_url()."uploads".$resume."'>Download Resume </a>";
+  echo "<br /><br /><a href='".base_url()."uploads/".$resume."'>Download Resume </a>";
 }
 
  ?>

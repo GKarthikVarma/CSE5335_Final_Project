@@ -8,18 +8,22 @@ class Edit_Profile extends CI_Controller {
   }
 
 
-  public function upload_file($filename)
+  public function upload_file($uploadFilename, $fieldname)
   {
-          $config['upload_path']          = base_url().'uploads/';
-          $config['allowed_types']        = 'doc|docx|pdf';
-          $config['max_size']             = 100;
 
-          $this->load->library('upload', $config);
+          $config['upload_path']          = './uploads';
+          $config['allowed_types']        = '*';
+          $config['max_size']             = 1024;
+          $config['file_name']            = $uploadFilename;
+          $config['overwrite']            = true;
 
-          if ( ! $this->upload->do_upload($filename))
+          $this->load->library('upload');
+          $this->upload->initialize($config, false);
+
+
+          if ( ! $this->upload->do_upload($fieldname))
           {
                   $error = array('error' => $this->upload->display_errors());
-
                   return $error;
           }
           else
@@ -30,17 +34,21 @@ class Edit_Profile extends CI_Controller {
           }
   }
 
-  public function upload_image($filename)
+  public function upload_image($uploadFilename, $fieldname)
   {
-          $config['upload_path']          = base_url().'uploads/';
+
+          $config['upload_path']          = './uploads/';
           $config['allowed_types']        = 'gif|jpg|png';
-          $config['max_size']             = 100;
-          $config['max_width']            = 1024;
-          $config['max_height']           = 768;
+          $config['max_size']             = 1024;
+          $config['max_width']            = 2048;
+          $config['max_height']           = 2048;
+          $config['file_name']             = $uploadFilename;
+          $config['overwrite']            = true;
 
-          $this->load->library('upload', $config);
+          $this->load->library('upload');
+          $this->upload->initialize($config, false);
 
-          if ( ! $this->upload->do_upload($filename))
+          if ( ! $this->upload->do_upload($fieldname))
           {
                   $error = array('error' => $this->upload->display_errors());
 
@@ -68,8 +76,40 @@ class Edit_Profile extends CI_Controller {
     $this->form_validation->set_rules("grad_year", "Graduation Year", "required|numeric|exact_length[4]");
     $this->form_validation->set_rules("skills", "Skills", "required");
 
+    $photoValidation="";
+    $resumeValidation="";
 
-    if($this->form_validation->run() == FALSE) {
+    if(!empty($_FILES['photo']['name'])) {
+      $filename=$_FILES['photo']['name'];
+      $filenameArray = explode(".", $filename);
+      $ext = strtolower(end($filenameArray));
+      $uploadPhotoName=$this->session->userdata("user_uid").".".$ext;
+      $errors=$this->upload_image($uploadPhotoName, "photo");
+      if(sizeof($errors) > 0) {
+        print_r($errors);
+        exit;
+      }
+    } else {
+      $photoValidation="<br />Please upload a photo";
+    }
+    if(!empty($_FILES['resume']['name'])) {
+      $filename=$_FILES['resume']['name'];
+      $filenameArray = explode(".", $filename);
+      $ext = strtolower(end($filenameArray));
+      $uploadResumeName=$this->session->userdata("user_uid").".".$ext;
+      $profileArray['user_resume'] = $uploadResumeName;
+      $errors=$this->upload_file($uploadResumeName, "resume");
+      if(sizeof($errors) > 0) {
+        print_r($errors);
+        exit;
+      }
+    } else {
+      $resumeValidation="<br />Please upload a resume";
+    }
+
+
+
+    if($this->form_validation->run() == FALSE || $photoValidation != "" || $resumeValidation != "") {
       $data['uid']=$this->session->userdata('user_id');
       $data['first_name']=$this->session->userdata('user_first');
       $data['last_name']=$this->session->userdata('user_last');
@@ -82,6 +122,8 @@ class Edit_Profile extends CI_Controller {
       $data['email'] = $this->session->userdata('user_email');
       $data['photo'] = $this->session->userdata('user_photo');
       $data['resume'] = $this->session->userdata('user_resume');
+      $data['photo_error'] = $photoValidation;
+      $data['resume_error'] = $resumeValidation;
       $header_data['u_type'] = $this->session->userdata('u_type');
 
       $this->load->view('header_login', $header_data);
@@ -102,29 +144,12 @@ class Edit_Profile extends CI_Controller {
                     'user_graduation_semester' => $this->input->post("grad_semester"),
                     'user_graduation_year' => $this->input->post("grad_year"),
                     'user_skills' => $this->input->post("skills"),
-                    'user_relocation' => $reloc
+                    'user_relocation' => $reloc,
+                    'user_photo' => $uploadPhotoName,
+                    'user_resume' => $uploadResumeName
       );
 
-      if(!empty($_FILES['photo']['name'])) {
-        $filename=$_FILES['photo']['name'];
-        $ext = strtolower(end(explode(".", $filename)));
-        $profileArray["user_photo"] = base_url()."uploads/".$this->session->userdata("user_uid").$ext;
-        $errors=upload_image("photo");
-        if(sizeof(errors) > 0) {
-          print_r($errors);
-          exit;
-        }
-      }
-      if(!empty($_FILES['resume']['name'])) {
-        $filename=$_FILES['resume']['name'];
-        $ext = strtolower(end(explode(".", $filename)));
-        $profileArray['user_resume'] = base_url()."uploads/".$this->session->userdata("user_uid").$ext;
-        $errors=upload_file("resume");
-        if(sizeof(errors) > 0) {
-          print_r($errors);
-          exit;
-        }
-      }
+
 
       $this->Edit_profile_model->insert_profile($uid, $profileArray);
       $this->session->set_userdata($profileArray);
