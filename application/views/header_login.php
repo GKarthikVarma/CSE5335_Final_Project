@@ -12,7 +12,7 @@
 	<nav>
 		<div class="main-wrapper">
 		<div class="title">
-		MavConnect
+			MavConnect
 	</div>
 	<?php
 		if ($u_type == "student")

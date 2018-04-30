@@ -11,18 +11,17 @@
 	echo form_submit("search", "Search", "class='search-button'");
  ?>
 </center>
-</div>
 
 <?php
 	if(isset($jobsArray)) {
-		echo "<div class='main-container'>";
-			echo "<div id='job-listings'>";
+			echo "<br /><br /><div id='job-listings'>";
 				echo "<table id='jobs'>";
 				echo "<tr>";
 					echo "<th>Job Title</th>";
 					echo "<th>Company Name</th>";
 					echo "<th>Location</th>";
 					echo "<th></th>";
+				echo "</tr>";
 					foreach($jobsArray as $row) {
 						$applied = in_array($row['job_id'], $jobIdsApplied);
 						echo "<tr>\n";
@@ -34,7 +33,11 @@
 						echo "<td>".$row['company_name']."</td>\n";
 						echo "<td>".$row['city'].", ".$row['state']."</td>\n";
 						echo "<td><a href='".base_url()."view_job/".$row['job_id']."'>View Job</a></td>";
+						echo "</tr>";
 					}
+			echo "</table>";
+		echo "</div>";
+
 
 	}
 ?>

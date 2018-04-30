@@ -32,6 +32,7 @@ class Search extends CI_Controller {
       } else {
         $data['jobIdsApplied'] = array();
       }
+
       $this->load->view('header_login', $header_data);
       $this->load->view('search', $data);
       $this->load->view('footer');

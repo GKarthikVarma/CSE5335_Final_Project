@@ -9,8 +9,8 @@
 	<nav>
 		<div class="main-wrapper">
 			<div class="title">
-			MavConnect
-		</div>
+				MavConnect
+			</div>
 			<div class='nav-login'>
 				<?php
 					echo form_open("index", "class='login-form'");
